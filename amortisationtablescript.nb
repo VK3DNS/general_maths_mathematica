@@ -1,0 +1,183 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6788,        175]
+NotebookOptionsPosition[      6441,        161]
+NotebookOutlinePosition[      6834,        177]
+CellTagsIndexPosition[      6791,        174]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tab", "::", "usage"}], "=", 
+   "\"\<\\!\\(\\*RowBox[{\\\"tab\\\", \\\"[\\\", StyleBox[\\\"ini\\\", \\\"TI\
+\\\"], \\\",\\\", StyleBox[\\\"its\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"rate\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"reg\\\", \\\"TI\\\
+\"], \\\",\\\", StyleBox[\\\"ppy\\\", \\\"TI\\\"],\\\"]\\\"}]\\) prints an \
+amortisation table with initial balance \\!\\(\\*StyleBox[\\\"ini\\\", \\\"TI\
+\\\"]\\) for \\!\\(\\*StyleBox[\\\"its\\\", \\\"TI\\\"]\\) iterations using \
+an interest rate of \\!\\(\\*StyleBox[\\\"rate\\\", \\\"TI\\\"]\\) and a \
+regular payment of \\!\\(\\*StyleBox[\\\"reg\\\", \\\"TI\\\"]\\), compounding \
+\\!\\(\\*StyleBox[\\\"ppy\\\", \\\"TI\\\"]\\) times per \
+year\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
+10]\\)\>\""}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"tab", "[", 
+    RowBox[{"ini_", ",", "its_", ",", "rate_", ",", "reg_", ",", "ppy_"}], 
+    "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"ini", ":", 
+        RowBox[{"intitial", " ", "bal"}]}], ",", 
+       RowBox[{"its", ":", 
+        RowBox[{"#", " ", "iterations"}]}], ",", 
+       RowBox[{"rate", ":", 
+        RowBox[{"interest", " ", "rate"}]}], ",", 
+       RowBox[{"reg", ":", 
+        RowBox[{"regular", " ", "payments"}]}], ",", 
+       RowBox[{"ppy", ":", 
+        RowBox[{"periods", " ", "per", " ", "year"}]}], ","}], "*)"}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"v", "[", "0", "]"}], ":=", "ini"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"v", "[", "t_", "]"}], ":=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"rate", "/", 
+            RowBox[{"(", 
+             RowBox[{"100", " ", "ppy"}], ")"}]}]}], ")"}], " ", 
+         RowBox[{"v", "[", 
+          RowBox[{"t", "-", "1"}], "]"}]}], "+", "reg"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"s", "[", "t_", "]"}], ":=", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1", "+", 
+           RowBox[{"rate", "/", 
+            RowBox[{"(", 
+             RowBox[{"100", " ", "ppy"}], ")"}]}]}], ")"}], " ", "t"}], "+", 
+        "reg"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"t", "=", "x"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", "\[IndentingNewLine]", 
+       RowBox[{"TableForm", "[", "\[IndentingNewLine]", 
+        RowBox[{"Join", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", 
+            RowBox[{
+            "\"\<payment number\>\"", ",", "\"\<regular payment\>\"", ",", 
+             "\"\<interest to be applied\>\"", ",", 
+             "\"\<change in principal\>\"", ",", "\"\<current bal\>\""}], 
+            "}"}], "}"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{"t", ",", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"t", ">", "0"}], ",", "reg", ",", "\"\<---\>\""}], 
+               "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"t", ">", "0"}], ",", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"rate", "/", 
+                   RowBox[{"(", 
+                    RowBox[{"100", " ", "ppy"}], ")"}]}], " ", 
+                  RowBox[{"v", "[", 
+                   RowBox[{"t", "-", "1"}], "]"}]}], "//", "N"}], ",", 
+                "\"\<---\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"t", ">", "0"}], ",", 
+                RowBox[{
+                 RowBox[{"reg", "+", 
+                  RowBox[{
+                   RowBox[{"rate", "/", 
+                    RowBox[{"(", 
+                    RowBox[{"100", " ", "ppy"}], ")"}]}], " ", 
+                   RowBox[{"v", "[", 
+                    RowBox[{"t", "-", "1"}], "]"}]}]}], "//", "N"}], ",", 
+                "\"\<---\>\""}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"v", "[", "t", "]"}], "//", "N"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"t", ",", "0", ",", "its"}], "}"}]}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{"{", 
+            RowBox[{"\"\<(total)\>\"", ",", "\[IndentingNewLine]", 
+             RowBox[{"reg", "*", "its"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Total", "[", 
+              RowBox[{
+               RowBox[{"NestList", "[", 
+                RowBox[{"s", ",", "ini", ",", 
+                 RowBox[{"its", "-", "1"}]}], "]"}], 
+               RowBox[{"(", 
+                RowBox[{"rate", "/", 
+                 RowBox[{"(", 
+                  RowBox[{"100", " ", "ppy"}], ")"}]}], ")"}]}], "]"}], " ", 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"reg", "*", "its"}], "+", 
+              RowBox[{"Total", "[", 
+               RowBox[{
+                RowBox[{"NestList", "[", 
+                 RowBox[{"s", ",", "ini", ",", 
+                  RowBox[{"its", "-", "1"}]}], "]"}], 
+                RowBox[{"(", 
+                 RowBox[{"rate", "/", 
+                  RowBox[{"(", 
+                   RowBox[{"100", " ", "ppy"}], ")"}]}], ")"}]}], "]"}]}], 
+             ",", "\[IndentingNewLine]", "\"\<---\>\""}], "}"}], "}"}]}], 
+         "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{3.963189621268012*^9},
+ CellLabel->"In[18]:=",ExpressionUUID->"be30e8a3-70a9-4dbd-933c-c768aa08e1a0"]
+},
+WindowSize->{808, 911},
+WindowMargins->{{28, Automatic}, {Automatic, 52}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d5556a2d-cb1a-404a-a80e-745d8fa1b733"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5879, 139, 745, "Input",ExpressionUUID->"be30e8a3-70a9-4dbd-933c-c768aa08e1a0"]
+}
+]
+*)
+

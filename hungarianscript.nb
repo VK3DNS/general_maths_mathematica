@@ -1,0 +1,1357 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     61960,       1349]
+NotebookOptionsPosition[     61610,       1335]
+NotebookOutlinePosition[     62002,       1351]
+CellTagsIndexPosition[     61959,       1348]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "make", " ", "sure", " ", "important", " ", "variables", " ", "are", " ", 
+    "global"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"marked", "=", "Null"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"colcovered", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"rowcovered", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selfpath", "=", "None"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selfC", "=", "None"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"backupC", "=", "None"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Z0R", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Z0C", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numnodes", "=", "Null"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"steplist", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "step1", ",", "\[IndentingNewLine]", "step2", ",", 
+       "\[IndentingNewLine]", "step3", ",", "\[IndentingNewLine]", "step4", 
+       ",", "\[IndentingNewLine]", "step5", ",", "\[IndentingNewLine]", 
+       "step6"}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"stepnum", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"init", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"init\\\", \\\"[\\\",\\\"]\\\"}]\\)\\nInits \
+global variables.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"init", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"marked", "=", "Null"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"colcovered", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"rowcovered", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"selfpath", "=", "None"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"selfC", "=", "None"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"backupC", "=", "None"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Z0R", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Z0C", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"numnodes", "=", "Null"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"steplist", "=", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+          "step1", ",", "\[IndentingNewLine]", "step2", ",", 
+           "\[IndentingNewLine]", "step3", ",", "\[IndentingNewLine]", 
+           "step4", ",", "\[IndentingNewLine]", "step5", ",", 
+           "\[IndentingNewLine]", "step6"}], "\[IndentingNewLine]", "}"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"stepnum", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"marked", "=", "Null"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"colcovered", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"rowcovered", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"selfpath", "=", "None"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"selfC", "=", "None"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Z0R", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Z0C", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"stepnum", "=", "0"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"hungarian", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"hungarian\\\", \\\"[\\\", \
+StyleBox[\\\"matrix/AdjacencyForm\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nRuns the \
+Hungarian algorithm on \\!\\(\\*StyleBox[\\\"matrix/AdjacencyForm\\\", \\\"TI\
+\\\"]\\). Returns an array of values and a total cost, along with this \
+explanation on how to read the \
+output:\\n\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> 9], \
+RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\\n\\!\\(\\*StyleBox[\\\"Created by Pepper \
+Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"hungarian", "[", "costmatrix_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"init", "[", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Depth", "[", "costmatrix", "]"}], "==", "6"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"data", "=", 
+            RowBox[{
+             RowBox[{"costmatrix", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"terminals", "=", 
+            RowBox[{
+             RowBox[{"data", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"striptop", "=", 
+            RowBox[{"Rest", "[", "data", "]"}]}], ";", "\[IndentingNewLine]", 
+           
+           RowBox[{"numnodes", "=", 
+            RowBox[{"Length", "[", "striptop", "]"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"dist", "=", 
+            RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"it", "=", "1"}], ",", 
+             RowBox[{"it", "<=", "numnodes"}], ",", 
+             RowBox[{"it", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"dist", "=", 
+               RowBox[{"Join", "[", "\[IndentingNewLine]", 
+                RowBox[{"dist", ",", "\[IndentingNewLine]", 
+                 RowBox[{"{", 
+                  RowBox[{"Rest", "[", 
+                   RowBox[{"striptop", "[", 
+                    RowBox[{"[", "it", "]"}], "]"}], "]"}], "}"}]}], 
+                "\[IndentingNewLine]", "]"}]}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"selfC", "=", "dist"}], ";"}], ",", "\[IndentingNewLine]", 
+          
+          RowBox[{
+           RowBox[{"numnodes", "=", 
+            RowBox[{"Length", "[", "costmatrix", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"selfC", "=", "costmatrix"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"numnodes", "=", 
+         RowBox[{"Length", "[", "selfC", "]"}]}], ";", "\[IndentingNewLine]", 
+        
+        RowBox[{"backupC", "=", "selfC"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"rowcovered", "=", 
+         RowBox[{"simplearray", "[", 
+          RowBox[{
+           RowBox[{"{", "numnodes", "}"}], ",", "False"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"colcovered", "=", 
+         RowBox[{"simplearray", "[", 
+          RowBox[{
+           RowBox[{"{", "numnodes", "}"}], ",", "False"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Z0R", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Z0C", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"selfpath", "=", 
+         RowBox[{"simplearray", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"numnodes", "*", "2"}], ",", 
+             RowBox[{"numnodes", "*", "2"}]}], "}"}], ",", "0"}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"marked", "=", 
+         RowBox[{"simplearray", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"numnodes", ",", "numnodes"}], "}"}], ",", "0"}], "]"}]}],
+         ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"done", "=", "False"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"step", "=", "1"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"Not", "[", "done", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"step", "=", 
+            RowBox[{
+             RowBox[{"steplist", "[", 
+              RowBox[{"[", "step", "]"}], "]"}], "[", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"stepnum", "+=", "1"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"step", "==", 
+              RowBox[{"-", "1"}]}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"done", "=", "True"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"step", "==", "0"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"done", "=", "True"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"results", "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"totalcost", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"marked", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "==", "1"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"AppendTo", "[", 
+                  RowBox[{"results", ",", 
+                   RowBox[{"{", 
+                    RowBox[{"iit", ",", "jit"}], "}"}]}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"totalcost", "+=", 
+                  RowBox[{"backupC", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}]}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "results", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<Total cost: \>\"", ",", "totalcost"}], "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+        "Print", "[", 
+         "\"\<\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> 9], \
+RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\>\"", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step1", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step1\\\", \\\"[\\\",\\\"]\\\"}]\\)\\nFor each \
+row of the matrix, find the smallest element and subtract it from every \
+element in its row. Go to Step 2.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper \
+Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step1", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"min", "=", 
+            RowBox[{
+             RowBox[{"Sort", "[", 
+              RowBox[{"selfC", "[", 
+               RowBox[{"[", "iit", "]"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"selfC", "[", 
+                RowBox[{"[", 
+                 RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "-=", "min"}], 
+              ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "2", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step2", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step2\\\", \\\"[\\\",\\\"]\\\"}]\\)\\nFind a \
+zero (Z) in the resulting matrix. If there is no starred zero in its row or \
+column, star Z. Repeat for each element in the matrix. Go to Step 3.\\n\\!\\(\
+\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\>\""}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step2", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"And", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"selfC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "==", "0"}], 
+                  ",", "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"rowcovered", "[", 
+                    RowBox[{"[", "iit", "]"}], "]"}], "]"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"colcovered", "[", 
+                    RowBox[{"[", "jit", "]"}], "]"}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"marked", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "=", "1"}], 
+                 ";", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"rowcovered", "[", 
+                   RowBox[{"[", "iit", "]"}], "]"}], "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"colcovered", "[", 
+                   RowBox[{"[", "jit", "]"}], "]"}], "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+               "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"clearcovers", "[", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "3", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step3", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step3\\\", \\\"[\\\",\\\"]\\\"}]\\)\\nCover \
+each column containing a starred zero. If K columns are covered, the starred \
+zeros describe a complete set of unique assignments. In this case, Go to \
+DONE, otherwise, Go to Step 4.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper \
+Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step3", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"count", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"And", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"marked", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "==", "1"}], 
+                  ",", "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"colcovered", "[", 
+                    RowBox[{"[", "jit", "]"}], "]"}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"colcovered", "[", 
+                   RowBox[{"[", "jit", "]"}], "]"}], "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"count", "+=", "1"}], ";"}]}], "\[IndentingNewLine]",
+                "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"count", ">=", "numnodes"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", "0", "]"}], ";"}], ",", " ", 
+          RowBox[{"(*", "done", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", "4", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step4", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step4\\\", \\\"[\\\",\\\"]\\\"}]\\)\\nFind a \
+noncovered zero and prime it. If there is no starred zero in the row \
+containing this primed zero, Go to Step 5. Otherwise, cover this row and \
+uncover the column containing the starred zero. Continue in this manner until \
+there are no uncovered zeros left. Save the smallest uncovered value and Go \
+to Step 6. Otherwise, return to Step 3.\\n\\!\\(\\*StyleBox[\\\"Created by \
+Pepper Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"step4", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"step", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"finished", "=", "False"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"row", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"col", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"Not", "[", "finished", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"row", ",", "col"}], "}"}], "=", 
+            RowBox[{"findzero", "[", 
+             RowBox[{"row", ",", "col"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"row", "<", "1"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"finished", "=", "True"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"step", "=", "6"}], ";"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"marked", "[", 
+                RowBox[{"[", 
+                 RowBox[{"row", ",", "col"}], "]"}], "]"}], "=", "2"}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"starcol", "=", 
+               RowBox[{"findstarrow", "[", "row", "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"starcol", ">=", "1"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"col", "=", "starcol"}], ";", "\[IndentingNewLine]", 
+                 
+                 RowBox[{
+                  RowBox[{"rowcovered", "[", 
+                   RowBox[{"[", "row", "]"}], "]"}], "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"colcovered", "[", 
+                   RowBox[{"[", "col", "]"}], "]"}], "=", "False"}], ";"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"finished", "=", "True"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Z0R", "=", "row"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Z0C", "=", "col"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"step", "=", "5"}], ";"}]}], "\[IndentingNewLine]", 
+               "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "step", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step5", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step5\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nConstruct a series of alternating primed and \
+starred zeros as follows. Let Z0 represent the uncovered primed zero found in \
+Step 4. Let Z1 denote the starred zero in the column of Z0 (if any). Let Z2 \
+denote the primed zero in the row of Z1 (there will always be one). Continue \
+until the series terminates at a primed zero that has no starred zero in its \
+column. Unstar each starred zero of the series, star each primed zero of the \
+series, erase all primes and uncover every line in the matrix. Return to Step \
+3\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
+10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step5", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"count", "=", "1"}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"selfpath", "[", 
+          RowBox[{"[", 
+           RowBox[{"count", ",", "1"}], "]"}], "]"}], "=", "Z0R"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"selfpath", "[", 
+          RowBox[{"[", 
+           RowBox[{"count", ",", "2"}], "]"}], "]"}], "=", "Z0C"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"finished", "=", "False"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"Not", "[", "finished", "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"row", "=", 
+            RowBox[{"findstarcol", "[", 
+             RowBox[{"selfpath", "[", 
+              RowBox[{"[", 
+               RowBox[{"count", ",", "2"}], "]"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"row", ">=", "1"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"count", "+=", "1"}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{"count", ",", "1"}], "]"}], "]"}], "=", "row"}], ";",
+               "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{"count", ",", "2"}], "]"}], "]"}], "=", 
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"count", "-", "1"}], ",", "2"}], "]"}], "]"}]}], 
+              ";"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"finished", "=", "True"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"Not", "[", "finished", "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"col", "=", 
+               RowBox[{"findprime", "[", 
+                RowBox[{"selfpath", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"count", ",", "1"}], "]"}], "]"}], "]"}]}], ";", 
+              "\[IndentingNewLine]", 
+              RowBox[{"count", "+=", "1"}], ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{"count", ",", "1"}], "]"}], "]"}], "=", 
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"count", "-", "1"}], ",", "1"}], "]"}], "]"}]}], 
+              ";", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"selfpath", "[", 
+                RowBox[{"[", 
+                 RowBox[{"count", ",", "2"}], "]"}], "]"}], "=", "col"}], 
+              ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"convertpath", "[", "count", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"clearcovers", "[", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"eraseprimes", "[", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "3", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"step6", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"step6\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nSubtracts the smallest value in the \
+\\!\\(\\*StyleBox[\\\"globalmatrix\\\", \\\"TI\\\"]\\) from each uncovered \
+cell and add it to each cell covered twice for use in the \\!\\(\\*RowBox[{\\\
+\"hungarian\\\", \\\"[\\\", StyleBox[\\\"matrix/AdjacencyForm\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) function.\\n\\!\\(\\*StyleBox[\\\"Created by \
+Pepper Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"step6", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"minval", "=", 
+         RowBox[{"findsmallest", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"events", "=", "0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"rowcovered", "[", 
+                 RowBox[{"[", "iit", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"selfC", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "+=", 
+                  "minval"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"events", "+=", "1"}]}]}], "\[IndentingNewLine]", 
+               "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"Not", "[", 
+                 RowBox[{"colcovered", "[", 
+                  RowBox[{"[", "jit", "]"}], "]"}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"selfC", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "-=", 
+                  "minval"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"events", "+=", "1"}]}]}], "\[IndentingNewLine]", 
+               "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"And", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"rowcovered", "[", 
+                   RowBox[{"[", "iit", "]"}], "]"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"colcovered", "[", 
+                    RowBox[{"[", "jit", "]"}], "]"}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"events", "-=", "2"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"events", "==", "0"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", 
+            RowBox[{"-", "1"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "4", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"clearcovers", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"clearcovers\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nSets all covers to \
+\\!\\(\\*StyleBox[\\\"False\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"clearcovers", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"rowcovered", "[", 
+             RowBox[{"[", "iit", "]"}], "]"}], "=", "False"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"colcovered", "[", 
+             RowBox[{"[", "iit", "]"}], "]"}], "=", "False"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findzero", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"findstarrow\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"inrow\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"{row,col}\\\", \\\"TI\\\"]\\) of the first 0 element in \
+\\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findzero", "[", 
+      RowBox[{"i0_", ",", "j0_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"locrow", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"loccol", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"iit", "=", "i0"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"zerofinished", "=", "False"}], ";", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{"While", "[", 
+         RowBox[{
+          RowBox[{"Not", "[", "zerofinished", "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"jit", "=", "j0"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"While", "[", 
+            RowBox[{"True", ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"And", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"selfC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "==", "0"}], 
+                  ",", "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"rowcovered", "[", 
+                    RowBox[{"[", "iit", "]"}], "]"}], "]"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"colcovered", "[", 
+                    RowBox[{"[", "jit", "]"}], "]"}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"locrow", "=", "iit"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"loccol", "=", "jit"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"zerofinished", "=", "True"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"jit", "+=", "1"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"jit", "=", 
+               RowBox[{
+                RowBox[{"Mod", "[", 
+                 RowBox[{
+                  RowBox[{"jit", "-", "1"}], ",", "numnodes"}], "]"}], "+", 
+                "1"}]}], ";", "\[IndentingNewLine]", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"jit", "==", "j0"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+               "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"iit", "+=", "1"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"iit", "=", 
+            RowBox[{
+             RowBox[{"Mod", "[", 
+              RowBox[{
+               RowBox[{"iit", "-", "1"}], ",", "numnodes"}], "]"}], "+", 
+             "1"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"iit", "==", "i0"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"zerofinished", "=", "True"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"{", 
+          RowBox[{"locrow", ",", "loccol"}], "}"}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findstarrow", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"findstarrow\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"inrow\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"index\\\", \\\"TI\\\"]\\) of the first starred element in \
+\\!\\(\\*StyleBox[\\\"selfC[[inrow,index]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findstarrow", "[", "inrow_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"loccol", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"jit", "=", "1"}], ",", 
+          RowBox[{"jit", "<=", "numnodes"}], ",", 
+          RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"marked", "[", 
+               RowBox[{"[", 
+                RowBox[{"inrow", ",", "jit"}], "]"}], "]"}], "==", "1"}], ",",
+              "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"loccol", "=", "jit"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "loccol", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findstarcol", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"findstarcol\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"incol\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"index\\\", \\\"TI\\\"]\\) of the first starred element in \
+\\!\\(\\*StyleBox[\\\"selfC[[index,incol]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findstarcol", "[", "incol_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"locrow", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"marked", "[", 
+               RowBox[{"[", 
+                RowBox[{"iit", ",", "incol"}], "]"}], "]"}], "==", "1"}], ",",
+              "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"locrow", "=", "iit"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "locrow", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findprime", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"findprime\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"row\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the first \
+prime in \\!\\(\\*StyleBox[\\\"selfC[[row]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findprime", "[", "inrow_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"loccol", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"jit", "=", "1"}], ",", 
+          RowBox[{"jit", "<=", "numnodes"}], ",", 
+          RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"marked", "[", 
+               RowBox[{"[", 
+                RowBox[{"inrow", ",", "jit"}], "]"}], "]"}], "==", "2"}], ",",
+              "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"loccol", "=", "jit"}], ";", "\[IndentingNewLine]", 
+              RowBox[{"Break", "[", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "loccol", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"eraseprimes", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"eraseprimes\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nUnmarks all primed \
+elements in \\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"eraseprimes", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"loccol", "=", 
+         RowBox[{"-", "1"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"marked", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "==", "2"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"marked", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}], "=", "0"}], 
+                 ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+            "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+         "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"convertpath", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"convertpath\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"countin\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nSwaps a \
+column of starred and unmarked elements in \\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"convertpath", "[", "countin_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", 
+           RowBox[{"countin", "+", "1"}]}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"marked", "[", 
+               RowBox[{"[", 
+                RowBox[{
+                 RowBox[{"selfpath", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"iit", ",", "1"}], "]"}], "]"}], ",", 
+                 RowBox[{"selfpath", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"iit", ",", "2"}], "]"}], "]"}]}], "]"}], "]"}], "==",
+               "1"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"marked", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"selfpath", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "1"}], "]"}], "]"}], ",", 
+                  RowBox[{"selfpath", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "2"}], "]"}], "]"}]}], "]"}], "]"}], 
+               "=", "0"}], ";"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"marked", "[", 
+                RowBox[{"[", 
+                 RowBox[{
+                  RowBox[{"selfpath", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "1"}], "]"}], "]"}], ",", 
+                  RowBox[{"selfpath", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"iit", ",", "2"}], "]"}], "]"}]}], "]"}], "]"}], 
+               "=", "1"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"findsmallest", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"findsmallest\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nInternal function to return the smallest value in \
+the \\!\\(\\*StyleBox[\\\"costmatrix\\\", \\\"TI\\\"]\\) from each uncovered \
+cell and add it to each cell covered twice for use in the \\!\\(\\*RowBox[{\\\
+\"hungarian\\\", \\\"[\\\", StyleBox[\\\"matrix/AdjacencyForm\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) function.\\n\\!\\(\\*StyleBox[\\\"Created by \
+Pepper Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{
+     RowBox[{"findsmallest", "[", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"minval", "=", "\[Infinity]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"iit", "=", "1"}], ",", 
+          RowBox[{"iit", "<=", "numnodes"}], ",", 
+          RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"jit", "=", "1"}], ",", 
+             RowBox[{"jit", "<=", "numnodes"}], ",", 
+             RowBox[{"jit", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"And", "[", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"Not", "[", 
+                   RowBox[{"rowcovered", "[", 
+                    RowBox[{"[", "iit", "]"}], "]"}], "]"}], ",", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Not", "[", 
+                   RowBox[{"colcovered", "[", 
+                    RowBox[{"[", "jit", "]"}], "]"}], "]"}]}], 
+                 "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"minval", ">", 
+                    RowBox[{"selfC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"minval", "=", 
+                    RowBox[{"selfC", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"iit", ",", "jit"}], "]"}], "]"}]}], ";"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "minval", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"array", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"array\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"{x1, x2, \[Ellipsis], xn}\\\", \\\"TI\\\"], \\\",\\\", \n\
+  StyleBox[\\\"initval*\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nPrints an \\!\\(\
+\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\)-dimensional array of size \
+\\!\\(\\*RowBox[{StyleBox[\\\"x1\\\", \\\"TI\\\"], \\\"*\\\", \n  StyleBox[\\\
+\"x2\\\", \\\"TI\\\"], \\\"*\\\", \\\"\[Ellipsis]\\\", \\\"*\\\", \n  \
+StyleBox[\\\"xn\\\", \\\"TI\\\"]}]\\), with all elements initialised to \
+\\!\\(\\*StyleBox[\\\"initval\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"initval\\\", \\\"TI\\\"]\\) defaults \
+to 0 if no argument is given.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott \
+:3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"array", "[", 
+      RowBox[{"x_", ",", 
+       RowBox[{"initval_", ":", "0"}]}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"initfunc", "[", "__", "]"}], ":=", "initval"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{
+          RowBox[{"Array", "[", 
+           RowBox[{"initfunc", ",", "x"}], "]"}], "//", "MatrixForm"}], "]"}],
+         ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"simplearray", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"simplearray\\\", \\\"[\\\", \n  \
+RowBox[{StyleBox[\\\"{x1, x2, \[Ellipsis], xn}\\\", \\\"TI\\\"], \\\",\\\", \n\
+  StyleBox[\\\"initval*\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nReturns an \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\)-dimensional array of size \
+\\!\\(\\*RowBox[{StyleBox[\\\"x1\\\", \\\"TI\\\"], \\\"*\\\", \n  StyleBox[\\\
+\"x2\\\", \\\"TI\\\"], \\\"*\\\", \\\"\[Ellipsis]\\\", \\\"*\\\", \n  \
+StyleBox[\\\"xn\\\", \\\"TI\\\"]}]\\), with all elements initialised to \
+\\!\\(\\*StyleBox[\\\"initval\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"initval\\\", \\\"TI\\\"]\\) defaults \
+to 0 if no argument is given.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott \
+:3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"simplearray", "[", 
+      RowBox[{"x_", ",", 
+       RowBox[{"initval_", ":", "0"}]}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"initfunc", "[", "__", "]"}], ":=", "initval"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"Array", "[", 
+          RowBox[{"initfunc", ",", "x"}], "]"}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"adjacency", "::", "usage"}], "=", 
+     "\"\<\\!\\(\\*RowBox[{\\\"adjacency\\\", \\\"[\\\",StyleBox[\\\"num\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\)\\nPrints an \\!\\(\\*StyleBox[\\\"AdjacencyForm\\\
+\", \\\"TI\\\"]\\) template for \\!\\(\\*StyleBox[\\\"num\\\", \\\"TI\\\"]\\) \
+nodes. Enter the data into the template, with \\!\\(\\*RowBox[{\\\"{\\\", \
+StyleBox[\\\"source\\\", \\\"TI\\\"], \\\",\\\",StyleBox[\\\"dest\\\", \\\"TI\
+\\\"], \\\"}\\\"}]\\) in the top-left corner. Run \\\"\\!\\(\\*RowBox[{\\\"//\
+\\\", StyleBox[\\\"pathfind\\\",\\\"TI\\\"], \\\" or //\\\", \
+StyleBox[\\\"hungarian\\\",\\\"TI\\\"]}]\\)\\\" on the template once \
+complete.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
+10]\\)\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"adjacency", "[", "numnodes_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"using", " ", "namespace", " ", "std"}], ";", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Clear", "[", 
+         RowBox[{
+         "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", ",",
+           "h", ",", "i", ",", "j", ",", "k", ",", "l", ",", "m", ",", "n", 
+          ",", "o", ",", "p", ",", "q", ",", "r", ",", "s", ",", "t", ",", 
+          "u", ",", "v", ",", "w", ",", "x", ",", "y", ",", "z"}], "]"}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"letters", "=", 
+         RowBox[{"{", 
+          RowBox[{
+          "a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "f", ",", "g", 
+           ",", "h", ",", "i", ",", "j", ",", "k", ",", "l", ",", "m", ",", 
+           "n", ",", "o", ",", "p", ",", "q", ",", "r", ",", "s", ",", "t", 
+           ",", "u", ",", "v", ",", "w", ",", "x", ",", "y", ",", "z"}], 
+          "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"initfunc", "[", "__", "]"}], ":=", "\[Infinity]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"outarr", "=", 
+         RowBox[{"Array", "[", 
+          RowBox[{"initfunc", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"numnodes", "+", "1"}], ",", 
+             RowBox[{"numnodes", "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"it", "=", "2"}], ",", 
+          RowBox[{"it", "<=", 
+           RowBox[{"numnodes", "+", "1"}]}], ",", 
+          RowBox[{"it", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"outarr", "[", 
+              RowBox[{"[", "it", "]"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "=", 
+            RowBox[{"letters", "[", 
+             RowBox[{"[", 
+              RowBox[{"it", "-", "1"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"outarr", "[", 
+              RowBox[{"[", "1", "]"}], "]"}], "[", 
+             RowBox[{"[", "it", "]"}], "]"}], "=", 
+            RowBox[{"letters", "[", 
+             RowBox[{"[", 
+              RowBox[{"it", "-", "1"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"outarr", "[", 
+              RowBox[{"[", "it", "]"}], "]"}], "[", 
+             RowBox[{"[", "it", "]"}], "]"}], "=", "0"}]}]}], 
+         "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"outarr", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "=", 
+         RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{"TableForm", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"\"\<\>\"", ",", "TO"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"FROM", ",", 
+               RowBox[{"outarr", "//", "MatrixForm"}]}], "}"}]}], "}"}], ",", 
+           
+           RowBox[{"TableAlignments", "->", "Center"}]}], "]"}], "]"}], 
+        ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.9632957925156803`*^9, 3.963295855189543*^9}, {
+   3.963295929336465*^9, 3.9632961005400677`*^9}, {3.963296357757725*^9, 
+   3.963296416625773*^9}, {3.963296464481784*^9, 3.9632965055978823`*^9}, {
+   3.9632965397199793`*^9, 3.9632965402543297`*^9}, {3.963296575675663*^9, 
+   3.9632966499875*^9}, {3.9632967552384033`*^9, 3.963296847631686*^9}, {
+   3.96329689454172*^9, 3.96329698433426*^9}, {3.963297018441399*^9, 
+   3.963297021350037*^9}, {3.963297657113449*^9, 3.963297670327221*^9}, {
+   3.963297706880477*^9, 3.963297786141575*^9}, {3.9632978823566236`*^9, 
+   3.963297886392832*^9}, {3.96329796936705*^9, 3.963297978843801*^9}, {
+   3.963298010019615*^9, 3.963298225454837*^9}, {3.963298268599625*^9, 
+   3.9632987010736437`*^9}, {3.963298878258437*^9, 3.96329889926687*^9}, {
+   3.963302280374858*^9, 3.963302296806077*^9}, {3.963302364267885*^9, 
+   3.9633024216495943`*^9}, {3.9633027701871347`*^9, 3.96330304089859*^9}, {
+   3.963303319024732*^9, 3.9633033742087717`*^9}, {3.963303433870816*^9, 
+   3.963303493931579*^9}, {3.9633036588434763`*^9, 3.963303700249905*^9}, {
+   3.96330397233047*^9, 3.963303989503463*^9}, {3.963305244175782*^9, 
+   3.9633052487378263`*^9}, {3.963305278744073*^9, 3.963305371221594*^9}, {
+   3.963305405874344*^9, 3.963305765089861*^9}, {3.963305798798976*^9, 
+   3.96330591323131*^9}, {3.9633059491537247`*^9, 3.963305972487187*^9}, {
+   3.963306022933186*^9, 3.96330640138743*^9}, {3.963306434820497*^9, 
+   3.96330646424364*^9}, {3.963306499828452*^9, 3.963306500878069*^9}, {
+   3.963306558645462*^9, 3.963306560477002*^9}, {3.96330663240849*^9, 
+   3.963306632776251*^9}, {3.9633066683262253`*^9, 3.963306741771234*^9}, {
+   3.963306925768182*^9, 3.9633069907173023`*^9}, {3.9633070226105223`*^9, 
+   3.963307074121209*^9}, 3.963307119160447*^9, {3.963307225992591*^9, 
+   3.963307266746065*^9}, {3.963307329116413*^9, 3.963307388715764*^9}, {
+   3.9633074242370768`*^9, 3.963307425663643*^9}, {3.963307690418149*^9, 
+   3.9633077121124277`*^9}, {3.963307748010117*^9, 3.9633077498315773`*^9}, {
+   3.963307792766893*^9, 3.963307821989485*^9}, {3.963307904024268*^9, 
+   3.963307915086392*^9}, {3.963308008223177*^9, 3.963308018910379*^9}, {
+   3.963308055526298*^9, 3.963308080177047*^9}, {3.963308167530592*^9, 
+   3.963308185736636*^9}, {3.963308220600638*^9, 3.963308287333439*^9}, {
+   3.963308392003788*^9, 3.963308414510861*^9}, {3.963308519657865*^9, 
+   3.9633086090027313`*^9}, {3.9633086532102137`*^9, 3.963308659066334*^9}, {
+   3.96330876616645*^9, 3.963308767154354*^9}, {3.963308826902663*^9, 
+   3.9633088389096212`*^9}, {3.963336986955058*^9, 3.963337163292624*^9}, {
+   3.9633373387418957`*^9, 3.963337376648797*^9}, {3.9633374486333237`*^9, 
+   3.9633374503350143`*^9}, {3.963337535133559*^9, 3.963337563766292*^9}, {
+   3.963337843498451*^9, 3.963337877691923*^9}, {3.963337981925539*^9, 
+   3.9633380033483953`*^9}, {3.9633382308412933`*^9, 3.963338237918167*^9}, {
+   3.963338418641946*^9, 3.963338458238171*^9}, {3.963338512029936*^9, 
+   3.96333851590604*^9}, {3.96333867417057*^9, 3.963338684549344*^9}, {
+   3.9633388887131357`*^9, 3.9633388994934673`*^9}, {3.963339020689377*^9, 
+   3.963339030446774*^9}, {3.963339299653558*^9, 3.963339300179179*^9}, {
+   3.963339336166376*^9, 3.9633393597780952`*^9}, {3.963339397154417*^9, 
+   3.963339420330682*^9}, {3.963344877396304*^9, 3.96334494557694*^9}, {
+   3.963345037200858*^9, 3.963345042934266*^9}, {3.963345085619295*^9, 
+   3.963345085843171*^9}, {3.963345159385206*^9, 3.963345236376495*^9}, {
+   3.963345409402657*^9, 3.963345423602838*^9}, 3.963345472256723*^9, {
+   3.963345553326252*^9, 3.963345557560405*^9}, {3.963345789429311*^9, 
+   3.963345789864245*^9}, {3.9633458229329844`*^9, 3.963345823205295*^9}, {
+   3.9633458837791967`*^9, 3.963345884276634*^9}, {3.963345937731048*^9, 
+   3.963345959903008*^9}, {3.963346221888277*^9, 3.963346223912678*^9}, 
+   3.963346361823203*^9, {3.963346420726276*^9, 3.963346420970945*^9}, {
+   3.9633464862517157`*^9, 3.963346486818469*^9}, {3.963346520523831*^9, 
+   3.9633465208714733`*^9}, {3.963346572993536*^9, 3.9633465734425993`*^9}, {
+   3.963346623426257*^9, 3.9633466279312363`*^9}, 3.963346677674625*^9, {
+   3.963347101841419*^9, 3.96334710237499*^9}, {3.963347205785048*^9, 
+   3.9633472410778313`*^9}, {3.9633482962882347`*^9, 3.963348298396998*^9}, {
+   3.9633488953353357`*^9, 3.963348895865777*^9}, {3.9633489462914133`*^9, 
+   3.9633489859433813`*^9}, {3.963349144423271*^9, 3.963349152121065*^9}, {
+   3.963349192454163*^9, 3.963349253461802*^9}, {3.9633492971959248`*^9, 
+   3.9633493369431334`*^9}, {3.963352331281004*^9, 3.96335237104993*^9}, {
+   3.9633525244595118`*^9, 3.963352567133834*^9}, {3.963352633083715*^9, 
+   3.96335266206328*^9}, 3.9633527771093807`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
+},
+WindowSize->{765, 870},
+WindowMargins->{{12, Automatic}, {Automatic, 6}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"b7152eba-c467-4d6b-887a-3a5e43324326"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 61048, 1313, 10804, "Input",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
+}
+]
+*)
+

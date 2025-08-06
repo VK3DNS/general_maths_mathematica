@@ -1,0 +1,420 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     19046,        412]
+NotebookOptionsPosition[     15261,        335]
+NotebookOutlinePosition[     15654,        351]
+CellTagsIndexPosition[     15611,        348]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"hungarian", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963196104672617*^9, 3.963196107360405*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"185bbb8e-b1d7-4c9b-a50f-b9d26460f666"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"hungarian\\\", \\\"[\\\", \
+StyleBox[\\\"matrix/AdjacencyForm\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nRuns the \
+Hungarian algorithm on \\!\\(\\*StyleBox[\\\"matrix/AdjacencyForm\\\", \\\"TI\
+\\\"]\\). Returns an array of values and a total cost, along with this \
+explanation on how to read the \
+output:\\n\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> 9], \
+RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\\n\\!\\(\\*StyleBox[\\\"Created by Pepper \
+Scott :3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963196108331168*^9, 3.9631965191377783`*^9, 
+  3.963196726413052*^9, 3.963347998457754*^9, 3.963348314446795*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"f802c52d-fb8e-4e8e-9703-014e4462c69e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"init", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963348014452793*^9, 3.9633480159255867`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"200910d1-9a9c-4a55-a03f-fc7c73d061c7"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"init\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nInits global \
+variables.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize \
+-> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.9633480161316757`*^9, 3.9633483149713697`*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"9c84c87e-997b-4a1f-8a01-908c347dac25"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step1", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.9631961101972237`*^9, 3.963196116024898*^9}, {
+  3.963348019621893*^9, 3.963348020182043*^9}},
+ CellLabel->"In[49]:=",ExpressionUUID->"c5572e2c-912c-4c17-bc9e-9ef992afb1af"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step1\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nFor each row of the matrix, find the smallest \
+element and subtract it from every element in its row. Go to Step 2.\\n\\!\\(\
+\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\"\>"], \
+"Output",
+ CellChangeTimes->{
+  3.963196118268784*^9, 3.963196293580995*^9, {3.963196517114678*^9, 
+   3.96319651833141*^9}, 3.963196727188986*^9, 3.9633480205814037`*^9, 
+   3.963348315927534*^9},
+ CellLabel->"Out[49]=",ExpressionUUID->"59ffd886-bbd0-4a59-b02a-f68a27225b28"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step2", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963196119653194*^9, 3.963196123771104*^9}, {
+  3.9633480218958387`*^9, 3.963348022800405*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"1ba19ddf-5d75-4a96-a952-1c1247b7458d"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step2\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nFind a zero (Z) in the resulting matrix. If there \
+is no starred zero in its row or column, star Z. Repeat for each element in \
+the matrix. Go to Step 3.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott \
+:3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963196124198121*^9, 3.963196516400666*^9, 
+  3.9631967281249228`*^9, 3.963348022981278*^9, 3.963348317109376*^9},
+ CellLabel->"Out[50]=",ExpressionUUID->"0d99e695-b54a-4845-be4b-a7340fdab853"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step3", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963196129963496*^9, 3.963196132173483*^9}, {
+  3.9633480242169447`*^9, 3.9633480247897778`*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"b1636ed9-37f0-4aaa-833f-61d9536e0884"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step3\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nCover each column containing a starred zero. If K \
+columns are covered, the starred zeros describe a complete set of unique \
+assignments. In this case, Go to DONE, otherwise, Go to Step \
+4.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\
+\"\>"], "Output",
+ CellChangeTimes->{
+  3.963196132565239*^9, {3.9631965135998983`*^9, 3.963196515570876*^9}, 
+   3.963196729193967*^9, 3.963348024978202*^9, 3.963348318061714*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"42a02719-dfb2-4392-866d-d2a2ae538b7d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step4", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.96319613655891*^9, 3.963196139811934*^9}, {
+  3.9633480270189342`*^9, 3.963348027628372*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"3ed9ac97-e1af-4607-b3a4-7afc14513d22"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step4\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nFind a noncovered zero and prime it. If there is \
+no starred zero in the row containing this primed zero, Go to Step 5. \
+Otherwise, cover this row and uncover the column containing the starred zero. \
+Continue in this manner until there are no uncovered zeros left. Save the \
+smallest uncovered value and Go to Step 6. Otherwise, return to Step 3.\\n\\!\
+\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\"\>"], \
+"Output",
+ CellChangeTimes->{3.96319614011969*^9, 3.963196512674708*^9, 
+  3.963196730169351*^9, 3.96334802782365*^9, 3.963348319226265*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"9cc416fc-4e7b-4c65-a4f8-7775bfe11488"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step5", "::", "usage"}]], "Input",
+ CellChangeTimes->{
+  3.96319643582906*^9, {3.9633481742657843`*^9, 3.963348174827956*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"5998eb1e-b1c0-4f17-bb4a-90a528a94019"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step5\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nConstruct a series of alternating primed and \
+starred zeros as follows. Let Z0 represent the uncovered primed zero found in \
+Step 4. Let Z1 denote the starred zero in the column of Z0 (if any). Let Z2 \
+denote the primed zero in the row of Z1 (there will always be one). Continue \
+until the series terminates at a primed zero that has no starred zero in its \
+column. Unstar each starred zero of the series, star each primed zero of the \
+series, erase all primes and uncover every line in the matrix. Return to Step \
+3\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
+10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963196436179943*^9, 3.963196511853455*^9, 
+  3.963196731762472*^9, 3.963348175412991*^9, 3.963348320677849*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"c4572b51-a29f-40e5-84d1-c69fbfe5b5ca"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"step6", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963196141163701*^9, 3.9631961457874537`*^9}, {
+  3.9633481771015778`*^9, 3.9633481798356524`*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"b9e6909c-b4eb-4416-b140-0cce2e11099c"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"step6\\\", \
+\\\"[\\\",\\\"]\\\"}]\\)\\nSubtracts the smallest value in the \
+\\!\\(\\*StyleBox[\\\"globalmatrix\\\", \\\"TI\\\"]\\) from each uncovered \
+cell and add it to each cell covered twice for use in the \\!\\(\\*RowBox[{\\\
+\"hungarian\\\", \\\"[\\\", StyleBox[\\\"matrix/AdjacencyForm\\\", \
+\\\"TI\\\"], \\\"]\\\"}]\\) function.\\n\\!\\(\\*StyleBox[\\\"Created by \
+Pepper Scott :3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{
+  3.963196146107038*^9, 3.963196510624881*^9, 3.963196733310145*^9, {
+   3.9633481783640337`*^9, 3.963348180082737*^9}, 3.963348322121229*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"8bf7979d-a765-44d1-8cc6-fd28b345e0a6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"clearcovers", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.9633481907578278`*^9, 3.963348193829341*^9}, {
+  3.963348237415094*^9, 3.96334823882616*^9}},
+ CellLabel->"In[55]:=",ExpressionUUID->"2a9314c5-a49a-4062-a188-fff73f5c3b07"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"clearcovers\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nSets all covers to \
+\\!\\(\\*StyleBox[\\\"False\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{
+  3.9633481941253233`*^9, {3.9633482392407923`*^9, 3.963348242934717*^9}, {
+   3.9633482768771477`*^9, 3.963348323252366*^9}},
+ CellLabel->"Out[55]=",ExpressionUUID->"2eef8299-e4be-4543-b94c-da3270506bdf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findzero", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963348195630782*^9, 3.96334819919284*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"dd4266f0-039a-4f1f-8f10-69524d09e610"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"findstarrow\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"inrow\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"{row,col}\\\", \\\"TI\\\"]\\) of the first 0 element in \
+\\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963348199761958*^9, 3.963348276110529*^9, 
+  3.963348324413069*^9},
+ CellLabel->"Out[56]=",ExpressionUUID->"823b013a-ae9b-4cf3-82c2-9c38056dc6eb"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findstarrow", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963348200408853*^9, 3.963348206652748*^9}},
+ CellLabel->"In[57]:=",ExpressionUUID->"2a52d404-4e61-4b61-be00-66466b03854c"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"findstarrow\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"inrow\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"index\\\", \\\"TI\\\"]\\) of the first starred element in \
+\\!\\(\\*StyleBox[\\\"selfC[[inrow,index]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963348206943955*^9, 3.9633482747191887`*^9, 
+  3.963348325482012*^9},
+ CellLabel->"Out[57]=",ExpressionUUID->"8c2b7629-8c85-4ab2-a78f-071b753f2d1e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findstarcol", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.9633482077271423`*^9, 3.963348212568611*^9}},
+ CellLabel->"In[58]:=",ExpressionUUID->"55f03754-52c5-4df0-bc39-c35de831d2f2"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"findstarcol\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"incol\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the \\!\
+\\(\\*StyleBox[\\\"index\\\", \\\"TI\\\"]\\) of the first starred element in \
+\\!\\(\\*StyleBox[\\\"selfC[[index,incol]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963348212801602*^9, 3.963348273946321*^9, 
+  3.963348326344412*^9},
+ CellLabel->"Out[58]=",ExpressionUUID->"37366b0b-a6b2-4945-b1de-b5463d90f230"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"findprime", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.96334824662202*^9, 3.963348254149475*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"cf381056-0a5e-4f5a-bdf9-c84d5ae96614"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"findprime\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"row\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nFinds the first \
+prime in \\!\\(\\*StyleBox[\\\"selfC[[row]]\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{{3.963348254348073*^9, 3.96334827321658*^9}, 
+   3.963348327606797*^9},
+ CellLabel->"Out[59]=",ExpressionUUID->"6fb550a8-90ee-40c9-90e2-b771c2d7c1e7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eraseprimes", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.9633482573907413`*^9, 3.9633482595144997`*^9}},
+ CellLabel->"In[60]:=",ExpressionUUID->"ad1a550a-5932-41f1-a50e-8bcf3c989999"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"eraseprimes\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nUnmarks all primed \
+elements in \\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{{3.963348260067169*^9, 3.963348271910872*^9}, 
+   3.96334832861795*^9},
+ CellLabel->"Out[60]=",ExpressionUUID->"3535d58e-5284-4e24-8b93-8f7abfe26b66"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"convertpath", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963348262603797*^9, 3.963348265001498*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"c1776d75-455a-46be-8a69-be9ed728b8a0"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"convertpath\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"countin\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nSwaps a \
+column of starred and unmarked elements in \\!\\(\\*StyleBox[\\\"selfC\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{{3.963348265284437*^9, 3.9633482711444187`*^9}, 
+   3.963348330653364*^9},
+ CellLabel->"Out[61]=",ExpressionUUID->"b960c74f-94cb-4d6c-968a-3d6dff01c732"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"adjacency", "::", "usage"}]], "Input",
+ CellChangeTimes->{{3.963348905199008*^9, 3.963348914983843*^9}},
+ CellLabel->
+  "In[258]:=",ExpressionUUID->"03407daf-1789-4f63-bed5-2db3cbdaa432"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"adjacency\\\", \
+\\\"[\\\",StyleBox[\\\"num\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nPrints an \
+\\!\\(\\*StyleBox[\\\"AdjacencyForm\\\", \\\"TI\\\"]\\) template for \
+\\!\\(\\*StyleBox[\\\"num\\\", \\\"TI\\\"]\\) nodes. Enter the data into the \
+template, with \\!\\(\\*RowBox[{\\\"{\\\", StyleBox[\\\"source\\\", \
+\\\"TI\\\"], \\\",\\\",StyleBox[\\\"dest\\\", \\\"TI\\\"], \\\"}\\\"}]\\) in \
+the top-left corner. Run \\\"\\!\\(\\*RowBox[{\\\"//\\\", \
+StyleBox[\\\"pathfind\\\",\\\"TI\\\"], \\\" or //\\\", StyleBox[\\\"hungarian\
+\\\",\\\"TI\\\"]}]\\)\\\" on the template once complete.\\n\\!\\(\\*StyleBox[\
+\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963348915266098*^9, 3.963349009081086*^9},
+ CellLabel->
+  "Out[258]=",ExpressionUUID->"6700fab8-9b54-45ec-b703-1a957b71813c"]
+}, Open  ]]
+},
+WindowSize->{765, 911},
+WindowMargins->{{Automatic, 49}, {Automatic, 72}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"15e117a8-b3f0-40de-855a-c0948c40a57f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 207, 3, 30, "Input",ExpressionUUID->"185bbb8e-b1d7-4c9b-a50f-b9d26460f666"],
+Cell[790, 27, 1492, 20, 121, "Output",ExpressionUUID->"f802c52d-fb8e-4e8e-9703-014e4462c69e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2319, 52, 204, 3, 30, "Input",ExpressionUUID->"200910d1-9a9c-4a55-a03f-fc7c73d061c7"],
+Cell[2526, 57, 344, 5, 77, "Output",ExpressionUUID->"9c84c87e-997b-4a1f-8a01-908c347dac25"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2907, 67, 254, 4, 30, "Input",ExpressionUUID->"c5572e2c-912c-4c17-bc9e-9ef992afb1af"],
+Cell[3164, 73, 558, 9, 98, "Output",ExpressionUUID->"59ffd886-bbd0-4a59-b02a-f68a27225b28"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3759, 87, 254, 4, 30, "Input",ExpressionUUID->"1ba19ddf-5d75-4a96-a952-1c1247b7458d"],
+Cell[4016, 93, 542, 7, 98, "Output",ExpressionUUID->"0d99e695-b54a-4845-be4b-a7340fdab853"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4595, 105, 256, 4, 30, "Input",ExpressionUUID->"b1636ed9-37f0-4aaa-833f-61d9536e0884"],
+Cell[4854, 111, 607, 9, 119, "Output",ExpressionUUID->"42a02719-dfb2-4392-866d-d2a2ae538b7d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5498, 125, 253, 4, 30, "Input",ExpressionUUID->"3ed9ac97-e1af-4607-b3a4-7afc14513d22"],
+Cell[5754, 131, 735, 10, 161, "Output",ExpressionUUID->"9cc416fc-4e7b-4c65-a4f8-7775bfe11488"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6526, 146, 229, 4, 30, "Input",ExpressionUUID->"5998eb1e-b1c0-4f17-bb4a-90a528a94019"],
+Cell[6758, 152, 908, 12, 203, "Output",ExpressionUUID->"c4572b51-a29f-40e5-84d1-c69fbfe5b5ca"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7703, 169, 258, 4, 30, "Input",ExpressionUUID->"b9e6909c-b4eb-4416-b140-0cce2e11099c"],
+Cell[7964, 175, 715, 10, 98, "Output",ExpressionUUID->"8bf7979d-a765-44d1-8cc6-fd28b345e0a6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8716, 190, 259, 4, 30, "Input",ExpressionUUID->"2a9314c5-a49a-4062-a188-fff73f5c3b07"],
+Cell[8978, 196, 524, 8, 77, "Output",ExpressionUUID->"2eef8299-e4be-4543-b94c-da3270506bdf"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9539, 209, 205, 3, 30, "Input",ExpressionUUID->"dd4266f0-039a-4f1f-8f10-69524d09e610"],
+Cell[9747, 214, 542, 8, 77, "Output",ExpressionUUID->"823b013a-ae9b-4cf3-82c2-9c38056dc6eb"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10326, 227, 209, 3, 30, "Input",ExpressionUUID->"2a52d404-4e61-4b61-be00-66466b03854c"],
+Cell[10538, 232, 561, 8, 77, "Output",ExpressionUUID->"8c2b7629-8c85-4ab2-a78f-071b753f2d1e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11136, 245, 211, 3, 30, "Input",ExpressionUUID->"55f03754-52c5-4df0-bc39-c35de831d2f2"],
+Cell[11350, 250, 559, 8, 77, "Output",ExpressionUUID->"37366b0b-a6b2-4945-b1de-b5463d90f230"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11946, 263, 206, 3, 30, "Input",ExpressionUUID->"cf381056-0a5e-4f5a-bdf9-c84d5ae96614"],
+Cell[12155, 268, 482, 7, 77, "Output",ExpressionUUID->"6fb550a8-90ee-40c9-90e2-b771c2d7c1e7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12674, 280, 213, 3, 30, "Input",ExpressionUUID->"ad1a550a-5932-41f1-a50e-8bcf3c989999"],
+Cell[12890, 285, 480, 7, 77, "Output",ExpressionUUID->"3535d58e-5284-4e24-8b93-8f7abfe26b66"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13407, 297, 209, 3, 30, "Input",ExpressionUUID->"c1776d75-455a-46be-8a69-be9ed728b8a0"],
+Cell[13619, 302, 510, 7, 77, "Output",ExpressionUUID->"b960c74f-94cb-4d6c-968a-3d6dff01c732"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14166, 314, 211, 4, 30, "Input",ExpressionUUID->"03407daf-1789-4f63-bed5-2db3cbdaa432"],
+Cell[14380, 320, 865, 12, 119, "Output",ExpressionUUID->"6700fab8-9b54-45ec-b703-1a957b71813c"]
+}, Open  ]]
+}
+]
+*)
+

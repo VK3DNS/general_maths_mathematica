@@ -1,0 +1,66 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2130,         58]
+NotebookOptionsPosition[      1658,         41]
+NotebookOutlinePosition[      2054,         57]
+CellTagsIndexPosition[      2011,         54]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"tab", "::", "usage"}]], "Input",
+ CellLabel->"In[20]:=",ExpressionUUID->"736d22a8-9798-4877-9000-a6607ca87989"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"tab\\\", \\\"[\\\", StyleBox[\\\"ini\\\
+\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"its\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"rate\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"reg\\\", \\\"TI\\\
+\"], \\\",\\\", StyleBox[\\\"ppy\\\", \\\"TI\\\"],\\\"]\\\"}]\\) prints an \
+amortisation table with initial balance \\!\\(\\*StyleBox[\\\"ini\\\", \\\"TI\
+\\\"]\\) for \\!\\(\\*StyleBox[\\\"its\\\", \\\"TI\\\"]\\) iterations using \
+an interest rate of \\!\\(\\*StyleBox[\\\"rate\\\", \\\"TI\\\"]\\) and a \
+regular payment of \\!\\(\\*StyleBox[\\\"reg\\\", \\\"TI\\\"]\\), compounding \
+\\!\\(\\*StyleBox[\\\"ppy\\\", \\\"TI\\\"]\\) times per \
+year\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
+10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963189583226418*^9, 3.9631896248746777`*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"5889b4f7-695f-4498-aa90-830d5aedaee2"]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 184}, {-119, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e328c4d1-367e-408d-b5e3-d5cae3858a91"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 135, 2, 30, "Input",ExpressionUUID->"736d22a8-9798-4877-9000-a6607ca87989"],
+Cell[718, 26, 924, 12, 98, "Output",ExpressionUUID->"5889b4f7-695f-4498-aa90-830d5aedaee2"]
+}, Open  ]]
+}
+]
+*)
+

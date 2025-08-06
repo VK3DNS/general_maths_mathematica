@@ -1,0 +1,132 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5312,        124]
+NotebookOptionsPosition[      4186,         95]
+NotebookOutlinePosition[      4578,        111]
+CellTagsIndexPosition[      4535,        108]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"array", "::", "usage"}]], "Input",
+ CellLabel->"In[52]:=",ExpressionUUID->"ec593b66-337f-4eb5-824e-e67f28945098"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"array\\\", \\\"[\\\", \\n  \
+RowBox[{StyleBox[\\\"{x1, x2, \[Ellipsis], xn}\\\", \\\"TI\\\"], \\\",\\\", \
+\\n  StyleBox[\\\"initval*\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\)\\nPrints an \\!\
+\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\)-dimensional array of size \
+\\!\\(\\*RowBox[{StyleBox[\\\"x1\\\", \\\"TI\\\"], \\\"*\\\", \\n  \
+StyleBox[\\\"x2\\\", \\\"TI\\\"], \\\"*\\\", \\\"\[Ellipsis]\\\", \\\"*\\\", \
+\\n  StyleBox[\\\"xn\\\", \\\"TI\\\"]}]\\), with all elements initialised to \
+\\!\\(\\*StyleBox[\\\"initval\\\", \
+\\\"TI\\\"]\\).\\n\\!\\(\\*StyleBox[\\\"initval\\\", \\\"TI\\\"]\\) defaults \
+to 0 if no argument is given.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott \
+:3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963189829980686*^9},
+ CellLabel->"Out[52]=",ExpressionUUID->"7140dac2-82c7-4918-a128-1bc061d6bc41"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pathfind", "::", "usage"}]], "Input",
+ CellLabel->"In[53]:=",ExpressionUUID->"db987d92-c032-4152-9114-fb7c60414888"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"pathfind\\\", \\\"[\\\", \\n  \
+StyleBox[\\\"AdjacencyForm\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nRuns the \
+Floyd-Warshall algorithm on \\!\\(\\*StyleBox[\\\"AdjacencyForm\\\", \\\"TI\\\
+\"]\\) for finding the shortest path between the nodes specified in the \
+terminals vector \\!\\(\\*RowBox[{\\\"{\\\", StyleBox[\\\"source\\\", \
+\\\"TI\\\"], \\\",\\\", \\nStyleBox[\\\"dest\\\", \\\"TI\\\"], \
+\\\"}\\\"}]\\). Prints out a list of nodes to traverse in order and the total \
+cost of the walk.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", \
+FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.96318983345096*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"d52de0ef-9032-4b5a-ab92-139f82971996"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"adjacency", "::", "usage"}]], "Input",
+ CellLabel->"In[54]:=",ExpressionUUID->"a18179ec-9977-41e9-bed9-a204cbc039b1"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"adjacency\\\", \
+\\\"[\\\",StyleBox[\\\"num\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nPrints an \
+\\!\\(\\*StyleBox[\\\"AdjacencyForm\\\", \\\"TI\\\"]\\) template for \
+\\!\\(\\*StyleBox[\\\"num\\\", \\\"TI\\\"]\\) nodes. Enter the data into the \
+template, with \\!\\(\\*RowBox[{\\\"{\\\", StyleBox[\\\"source\\\", \
+\\\"TI\\\"], \\\",\\\",StyleBox[\\\"dest\\\", \\\"TI\\\"], \\\"}\\\"}]\\) in \
+the top-left corner. Run \\\"\\!\\(\\*RowBox[{\\\"//\\\", \
+StyleBox[\\\"pathfind\\\",\\\"TI\\\"]}]\\)\\\" on the template once complete.\
+\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> 10]\\)\"\
+\>"], "Output",
+ CellChangeTimes->{3.963189837073667*^9},
+ CellLabel->"Out[54]=",ExpressionUUID->"361ba366-efdd-40ee-8c17-455964cf06e0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AdjacencyForm", "::", "usage"}]], "Input",
+ CellLabel->"In[55]:=",ExpressionUUID->"fac87d55-4e79-4cde-8f16-a601c9fe8392"],
+
+Cell[BoxData["\<\"\\!\\(\\*RowBox[{\\\"AdjacencyForm\\\", \\\"[\\\", \\n  \
+StyleBox[\\\"matrix\\\", \\\"TI\\\"], \\\"]\\\"}]\\)\\nConverts the raw input \
+\\!\\(\\*StyleBox[\\\"matrix\\\", \\\"TI\\\"]\\) into an \\!\\(\\*StyleBox[\\\
+\"AdjacencyForm\\\", \\\"TI\\\"]\\) template.\\n\\!\\(\\*StyleBox[\\\"Created \
+by Pepper Scott :3\\\", FontSize -> 10]\\)\"\>"], "Output",
+ CellChangeTimes->{3.963189841807151*^9},
+ CellLabel->"Out[55]=",ExpressionUUID->"04e2f949-213e-463f-8c00-470ca14a017e"]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 96}, {0, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"f62af83f-4a33-4ded-9d20-c7155466c6ac"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 137, 2, 30, "Input",ExpressionUUID->"ec593b66-337f-4eb5-824e-e67f28945098"],
+Cell[720, 26, 881, 12, 119, "Output",ExpressionUUID->"7140dac2-82c7-4918-a128-1bc061d6bc41"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1638, 43, 140, 2, 30, "Input",ExpressionUUID->"db987d92-c032-4152-9114-fb7c60414888"],
+Cell[1781, 47, 745, 10, 119, "Output",ExpressionUUID->"d52de0ef-9032-4b5a-ab92-139f82971996"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2563, 62, 141, 2, 30, "Input",ExpressionUUID->"a18179ec-9977-41e9-bed9-a204cbc039b1"],
+Cell[2707, 66, 783, 11, 98, "Output",ExpressionUUID->"361ba366-efdd-40ee-8c17-455964cf06e0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3527, 82, 145, 2, 30, "Input",ExpressionUUID->"fac87d55-4e79-4cde-8f16-a601c9fe8392"],
+Cell[3675, 86, 495, 6, 77, "Output",ExpressionUUID->"04e2f949-213e-463f-8c00-470ca14a017e"]
+}, Open  ]]
+}
+]
+*)
+

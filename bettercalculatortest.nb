@@ -1,0 +1,475 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     20101,        465]
+NotebookOptionsPosition[     19626,        448]
+NotebookOutlinePosition[     20021,        464]
+CellTagsIndexPosition[     19978,        461]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData["BC"], "Input",
+ CellChangeTimes->{{3.9631894131087627`*^9, 3.963189413321212*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"1d068ba8-f74c-499a-b2ed-a457b36b0f06"],
+
+Cell[BoxData[
+ PanelBox[
+  DynamicModuleBox[{$CellContext`NP$$ = Null, $CellContext`INT$$ = 
+   5, $CellContext`MP$$ = -5000, $CellContext`previous$$ = 
+   0, $CellContext`FV$$ = 0, $CellContext`PRINCIPAL$$ = 
+   5, $CellContext`PaymentMode$$ = -1, $CellContext`PaymentModeString$$ = 
+   "Payment ", $CellContext`PaymentInterval$$ = 
+   12, $CellContext`PaymentStyle$$ = Bold, $CellContext`InvestmentStyle$$ = 
+   "", $CellContext`DayStyle$$ = "", $CellContext`WeekStyle$$ = 
+   "", $CellContext`FortnightStyle$$ = "", $CellContext`MonthStyle$$ = 
+   Bold, $CellContext`QuarterStyle$$ = "", $CellContext`YearStyle$$ = 
+   "", $CellContext`SelectedFont$$ = "Verdana", $CellContext`message$$ = 
+   "\!\(\*RowBox[{\"NSolve unable to find solution. This is likely because it \
+diverges. Please check the sign of your \", StyleBox[\"Payment Value\", \
+\"TI\"]}]\).", $CellContext`result$$ = 
+   "\!\(\*RowBox[{\"NSolve unable to find solution. This is likely because it \
+diverges. Please check the sign of your \", StyleBox[\"Payment Value\", \
+\"TI\"]}]\)."}, 
+   TagBox[GridBox[{
+      {
+       StyleBox["\<\"Financial Calculator\[Trademark] v6.9 Beta\"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana",
+        FontWeight->Bold], "\<\"\"\>"},
+      {
+       StyleBox["\<\"Mode: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InterpretationBox[GridBox[{
+          {
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Payment", $CellContext`PaymentStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{64., {2.615234375, 9.45166015625}}],
+            Appearance->{"DialogBox", "AbuttingRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentMode$$ = -1, \
+$CellContext`PaymentStyle$$ = Bold, $CellContext`InvestmentStyle$$ = 
+               "", $CellContext`PaymentModeString$$ = "Payment "}],
+            Evaluator->Automatic,
+            ImageSize->{225, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Investment", $CellContext`InvestmentStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{75., {0.17138671875, 9.45166015625}}],
+            Appearance->{"DialogBox", "AbuttingLeft"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentMode$$ = 
+               1, $CellContext`InvestmentStyle$$ = 
+               Bold, $CellContext`PaymentStyle$$ = 
+               "", $CellContext`PaymentModeString$$ = "Investment "}],
+            Evaluator->Automatic,
+            ImageSize->{225, 20},
+            Method->"Preemptive"]}
+         },
+         AutoDelete->False,
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}],
+        ButtonBar[{Dynamic[
+            Style[
+            "Payment", $CellContext`PaymentStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentMode$$ = -1, \
+$CellContext`PaymentStyle$$ = Bold, $CellContext`InvestmentStyle$$ = 
+             "", $CellContext`PaymentModeString$$ = "Payment "}], Dynamic[
+            Style[
+            "Investment", $CellContext`InvestmentStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentMode$$ = 
+             1, $CellContext`InvestmentStyle$$ = 
+             Bold, $CellContext`PaymentStyle$$ = 
+             "", $CellContext`PaymentModeString$$ = "Investment "}]}, 
+         ImageSize -> {225, 20}, Appearance -> {"DialogBox"}]]},
+      {
+       StyleBox[
+        DynamicBox[ToBoxes[
+          StringForm[$CellContext`PaymentModeString$$ <> "Interval"], 
+          StandardForm],
+         ImageSizeCache->{87., {2.01171875, 7.59765625}}],
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InterpretationBox[GridBox[{
+          {
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Day", $CellContext`DayStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{26., {2.615234375, 9.45166015625}}],
+            Appearance->{"DialogBox", "AbuttingRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               365, $CellContext`DayStyle$$ = 
+               Bold, {$CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`MonthStyle$$, \
+$CellContext`QuarterStyle$$, $CellContext`YearStyle$$} = {
+                "", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Week", $CellContext`WeekStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{36., {0.1650390625, 9.876953125}}],
+            Appearance->{"DialogBox", "AbuttingLeftRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               52, $CellContext`WeekStyle$$ = 
+               Bold, {$CellContext`DayStyle$$, $CellContext`FortnightStyle$$, \
+$CellContext`MonthStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Fortnight", $CellContext`FortnightStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{59., {2.68505859375, 9.876953125}}],
+            Appearance->{"DialogBox", "AbuttingLeftRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               26, $CellContext`FortnightStyle$$ = 
+               Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`MonthStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Month", $CellContext`MonthStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{46., {0.22216796875, 9.876953125}}],
+            Appearance->{"DialogBox", "AbuttingLeftRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               12, $CellContext`MonthStyle$$ = 
+               Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Quarter", $CellContext`QuarterStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{50., {2.49462890625, 9.6484375}}],
+            Appearance->{"DialogBox", "AbuttingLeftRight"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               4, $CellContext`QuarterStyle$$ = 
+               Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`MonthStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"], 
+           ButtonBox[
+            DynamicBox[ToBoxes[
+              Style[
+              "Year", $CellContext`YearStyle$$, 
+               FontFamily -> $CellContext`SelectedFont$$], StandardForm],
+             ImageSizeCache->{29., {0.19677734375, 9.45166015625}}],
+            Appearance->{"DialogBox", "AbuttingLeft"},
+            
+            ButtonFunction:>
+             Dynamic[{$CellContext`PaymentInterval$$ = 
+               1, $CellContext`YearStyle$$ = 
+               Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`MonthStyle$$, \
+$CellContext`QuarterStyle$$} = {"", "", "", "", ""}}],
+            Evaluator->Automatic,
+            ImageSize->{75, 20},
+            Method->"Preemptive"]}
+         },
+         AutoDelete->False,
+         GridBoxItemSize->{
+          "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}],
+        ButtonBar[{Dynamic[
+            Style[
+            "Day", $CellContext`DayStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             365, $CellContext`DayStyle$$ = 
+             Bold, {$CellContext`WeekStyle$$, $CellContext`FortnightStyle$$, \
+$CellContext`MonthStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}], Dynamic[
+            Style[
+            "Week", $CellContext`WeekStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             52, $CellContext`WeekStyle$$ = 
+             Bold, {$CellContext`DayStyle$$, $CellContext`FortnightStyle$$, \
+$CellContext`MonthStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}], Dynamic[
+            Style[
+            "Fortnight", $CellContext`FortnightStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             26, $CellContext`FortnightStyle$$ = 
+             Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`MonthStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}], Dynamic[
+            Style[
+            "Month", $CellContext`MonthStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             12, $CellContext`MonthStyle$$ = 
+             Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`QuarterStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}], Dynamic[
+            Style[
+            "Quarter", $CellContext`QuarterStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             4, $CellContext`QuarterStyle$$ = 
+             Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`MonthStyle$$, \
+$CellContext`YearStyle$$} = {"", "", "", "", ""}}], Dynamic[
+            Style[
+            "Year", $CellContext`YearStyle$$, 
+             FontFamily -> $CellContext`SelectedFont$$]] :> 
+          Dynamic[{$CellContext`PaymentInterval$$ = 
+             1, $CellContext`YearStyle$$ = 
+             Bold, {$CellContext`DayStyle$$, $CellContext`WeekStyle$$, \
+$CellContext`FortnightStyle$$, $CellContext`MonthStyle$$, \
+$CellContext`QuarterStyle$$} = {"", "", "", "", ""}}]}, ImageSize -> {75, 20},
+          Appearance -> {"DialogBox"}]]},
+      {
+       StyleBox["\<\"Number of Years: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InputFieldBox[Dynamic[$CellContext`NP$$], Number]},
+      {
+       StyleBox["\<\"Interest Rate: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InputFieldBox[Dynamic[$CellContext`INT$$]]},
+      {
+       StyleBox[
+        DynamicBox[ToBoxes[
+          StringForm[$CellContext`PaymentModeString$$ <> "Value"], 
+          StandardForm],
+         ImageSizeCache->{76., {2.01171875, 7.59765625}}],
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InputFieldBox[Dynamic[$CellContext`MP$$]]},
+      {
+       StyleBox["\<\"Future Value: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InputFieldBox[Dynamic[$CellContext`FV$$]]},
+      {
+       StyleBox["\<\"Present Value: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       InputFieldBox[Dynamic[$CellContext`PRINCIPAL$$]]},
+      {
+       StyleBox["\<\"Submit: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       ButtonBox[
+        StyleBox["\<\"Calculate the unknown\"\>",
+         StripOnInput->False,
+         FontFamily->"Verdana"],
+        Appearance->Automatic,
+        ButtonFunction:>
+         DynamicModule[{$CellContext`check, $CellContext`emptypars, \
+$CellContext`unknown, $CellContext`valid, $CellContext`vars, \
+$CellContext`index, $CellContext`vars2, $CellContext`fv}, $CellContext`fv[
+             Pattern[$CellContext`pv, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`c, 
+              Blank[]], 
+             Pattern[$CellContext`np, 
+              Blank[]], 
+             Pattern[$CellContext`r, 
+              Blank[]]] := 
+           N[$CellContext`pv (
+                1 + $CellContext`i/$CellContext`c)^$CellContext`np + \
+$CellContext`r (((1 + $CellContext`i/$CellContext`c)^$CellContext`np - 
+                1)/($CellContext`i/$CellContext`c))]; $CellContext`vars = {
+             Unevaluated[$CellContext`NP$$], 
+             Unevaluated[$CellContext`INT$$], 
+             Unevaluated[$CellContext`MP$$], 
+             Unevaluated[$CellContext`FV$$], 
+             Unevaluated[$CellContext`PRINCIPAL$$]}; $CellContext`vars2 = 
+           Map[Evaluate, $CellContext`vars]; $CellContext`valid = 
+           Select[$CellContext`vars2, NumericQ]; 
+          If[Length[$CellContext`valid] < 4, $CellContext`unknown = "NEI"; 
+            Goto[$CellContext`end]]; 
+          If[Length[$CellContext`valid] > 4, $CellContext`unknown = "TMI"; 
+            Goto[$CellContext`end]]; $CellContext`index = Part[
+             Position[$CellContext`vars2, 
+              Except[
+               PatternTest[
+                Blank[], NumericQ]], 1], 2, 1]; 
+          Check[Switch[$CellContext`index, 1, $CellContext`result$$ = 
+              ReplaceAll[(1/$CellContext`PaymentInterval$$) $CellContext`np, 
+                Part[
+                 NSolve[
+                  
+                  And[$CellContext`fv[$CellContext`PRINCIPAL$$, \
+$CellContext`INT$$/
+                    100, $CellContext`PaymentInterval$$, $CellContext`np, \
+$CellContext`PaymentMode$$ $CellContext`MP$$] == $CellContext`FV$$, \
+$CellContext`np > 0], $CellContext`np, Reals], 1]], 2, $CellContext`result$$ = 
+              ReplaceAll[$CellContext`int, 
+                Part[
+                 NSolve[
+                  
+                  And[$CellContext`fv[$CellContext`PRINCIPAL$$, \
+$CellContext`int/
+                    100, $CellContext`PaymentInterval$$, $CellContext`NP$$ \
+$CellContext`PaymentInterval$$, $CellContext`PaymentMode$$ $CellContext`MP$$] == \
+$CellContext`FV$$, $CellContext`int > 0], $CellContext`int, Reals], 1]], 
+              3, $CellContext`result$$ = 
+              ReplaceAll[$CellContext`PaymentMode$$ $CellContext`mp, 
+                Part[
+                 
+                 NSolve[$CellContext`fv[$CellContext`PRINCIPAL$$, \
+$CellContext`INT$$/
+                    100, $CellContext`PaymentInterval$$, $CellContext`NP$$ \
+$CellContext`PaymentInterval$$, $CellContext`mp] == $CellContext`FV$$, \
+$CellContext`mp, Reals], 1]], 
+              4, $CellContext`result$$ = \
+$CellContext`fv[$CellContext`PRINCIPAL$$, $CellContext`INT$$/
+                100, $CellContext`PaymentInterval$$, $CellContext`NP$$ \
+$CellContext`PaymentInterval$$, $CellContext`PaymentMode$$ $CellContext`MP$$],
+               5, $CellContext`result$$ = ReplaceAll[$CellContext`p, 
+                Part[
+                 
+                 NSolve[$CellContext`fv[$CellContext`p, $CellContext`INT$$/
+                    100, $CellContext`PaymentInterval$$, $CellContext`NP$$ \
+$CellContext`PaymentInterval$$, $CellContext`PaymentMode$$ $CellContext`MP$$] == \
+$CellContext`FV$$, $CellContext`p, Reals], 1]], "NEI", $CellContext`result$$ = 
+              "Not enough information.", "TMI", $CellContext`result$$ = 
+              "No unknown to solve for."]; Null, 
+            If[$CellContext`PaymentMode$$ == 1, $CellContext`result$$ = 
+              "\!\(\*RowBox[{\"NSolve unable to find solution. This is likely \
+because it diverges. Please check the sign of your \", StyleBox[\"Investment \
+Value\", \"TI\"]}]\).", $CellContext`result$$ = 
+              "\!\(\*RowBox[{\"NSolve unable to find solution. This is likely \
+because it diverges. Please check the sign of your \", StyleBox[\"Payment \
+Value\", \"TI\"]}]\)."]; Null]; Label[$CellContext`end]; If[
+            Not[
+             StringQ[$CellContext`result$$]], 
+            Print[
+             N[
+              
+              Round[$CellContext`result$$, 
+               10^(-6)]]]]; $CellContext`message$$ = $CellContext`result$$; 
+          Null],
+        Evaluator->Automatic,
+        Method->"Preemptive"]},
+      {
+       StyleBox["\<\"Result: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana"], 
+       DynamicBox[ToBoxes[
+         SetPrecision[
+          
+          Style[$CellContext`message$$, 
+           FontFamily -> $CellContext`SelectedFont$$], 12], StandardForm],
+        ImageSizeCache->{455., {18.099609375, 10.0537109375}}]},
+      {
+       StyleBox["\<\"Credits: \"\>",
+        StripOnInput->False,
+        FontFamily->"Verdana",
+        FontSize->10,
+        FontColor->RGBColor[0.69, 0.69, 0.69, 1]], 
+       StyleBox["\<\"\[Copyright] R.W, R.T\[Trademark], L.A\
+\[RegisteredTrademark] and Pepper Scott :3\"\>",
+        StripOnInput->False,
+        FontSize->10,
+        FontColor->RGBColor[0.69, 0.69, 0.69, 1]]}
+     },
+     AutoDelete->False,
+     GridBoxAlignment->{"Columns" -> {{Left}}},
+     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+     GridBoxSpacings->{"Columns" -> {{3}}, "Rows" -> {{1}}}],
+    "Grid"],
+   DynamicModuleValues:>{}]]], "Output",
+ CellChangeTimes->{3.963189421383546*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"8f370582-b41f-4242-aeb0-d7c132296aa8"]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 356}, {-22, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7b4b1e93-5862-43eb-bc9a-9cb0bea2cfc1"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 175, 2, 30, "Input",ExpressionUUID->"1d068ba8-f74c-499a-b2ed-a457b36b0f06"],
+Cell[758, 26, 18852, 419, 363, "Output",ExpressionUUID->"8f370582-b41f-4242-aeb0-d7c132296aa8"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

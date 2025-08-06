@@ -1,0 +1,614 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23431,        606]
+NotebookOptionsPosition[     20142,        541]
+NotebookOutlinePosition[     20534,        557]
+CellTagsIndexPosition[     20491,        554]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"adjacency", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.9631906310841303`*^9, 3.9631906370720263`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"601cea25-c654-4a0b-9afc-77eae2368ba3"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", "}"}], "a", "b", "c", "d"},
+          {"a", "82", "83", "69", "92"},
+          {"b", "77", "37", "49", "92"},
+          {"c", "11", "69", "5", "86"},
+          {"d", "8", "9", "98", "23"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "hungarian"}]], "Input",
+ CellChangeTimes->{{3.963190659926515*^9, 3.963190666904365*^9}, {
+  3.963190968033325*^9, 3.963190999959704*^9}},
+ CellLabel->
+  "In[387]:=",ExpressionUUID->"05c7daba-bf29-4586-97da-26f6408a0a09"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.963191000301482*^9, 3.963191203924513*^9, 3.963191668622447*^9, {
+   3.9631919002237988`*^9, 3.96319191321839*^9}, 3.96319198809235*^9, 
+   3.963195459707225*^9, {3.963196451509041*^9, 3.9631964534813004`*^9}, 
+   3.9631964912156363`*^9, 3.963196634286619*^9, {3.963196664291565*^9, 
+   3.963196724231194*^9}, 3.9632512880255737`*^9, 3.963252388503601*^9, 
+   3.963255310105488*^9, 3.9633574626474733`*^9},
+ CellLabel->
+  "During evaluation of \
+In[387]:=",ExpressionUUID->"740a9e6a-443d-487b-8b91-ecbd37e1130d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", "140"}],
+  SequenceForm["Total cost: ", 140],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.963191000301482*^9, 3.963191203924513*^9, 3.963191668622447*^9, {
+   3.9631919002237988`*^9, 3.96319191321839*^9}, 3.96319198809235*^9, 
+   3.963195459707225*^9, {3.963196451509041*^9, 3.9631964534813004`*^9}, 
+   3.9631964912156363`*^9, 3.963196634286619*^9, {3.963196664291565*^9, 
+   3.963196724231194*^9}, 3.9632512880255737`*^9, 3.963252388503601*^9, 
+   3.963255310105488*^9, 3.963357462648488*^9},
+ CellLabel->
+  "During evaluation of \
+In[387]:=",ExpressionUUID->"1aa85d2f-db76-4ae2-aa74-f51478cf950d"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{
+  3.963191000301482*^9, 3.963191203924513*^9, 3.963191668622447*^9, {
+   3.9631919002237988`*^9, 3.96319191321839*^9}, 3.96319198809235*^9, 
+   3.963195459707225*^9, {3.963196451509041*^9, 3.9631964534813004`*^9}, 
+   3.9631964912156363`*^9, 3.963196634286619*^9, {3.963196664291565*^9, 
+   3.963196724231194*^9}, 3.9632512880255737`*^9, 3.963252388503601*^9, 
+   3.963255310105488*^9, 3.963357462649982*^9},
+ CellLabel->
+  "During evaluation of \
+In[387]:=",ExpressionUUID->"e3e8e62f-27fd-496d-a480-918c3858afcf"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"82", "83", "69", "92"},
+      {"77", "37", "49", "92"},
+      {"11", "69", "5", "86"},
+      {"8", "9", "98", "23"}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}], "\[NoBreak]", ")"}],
+   Function[BoxForm`e$, 
+    MatrixForm[BoxForm`e$]]], "//", "hungarian"}]], "Input",
+ CellChangeTimes->{{3.963251275914714*^9, 3.963251281564611*^9}, {
+  3.963255319068343*^9, 3.963255324753829*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"dcfaacba-0a53-43f3-a85b-80fa6ddb28f8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{3.963265675390237*^9, 3.963268066109728*^9, 
+  3.9632681153319597`*^9, 3.963268208826956*^9, 3.96335746462707*^9, 
+  3.963464974026569*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"dbadaaad-1173-4220-9300-12434a9581ca"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", "140"}],
+  SequenceForm["Total cost: ", 140],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.963265675390237*^9, 3.963268066109728*^9, 
+  3.9632681153319597`*^9, 3.963268208826956*^9, 3.96335746462707*^9, 
+  3.963464974027404*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"6896da2d-be22-40d9-999a-9ea71b0458b6"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{3.963265675390237*^9, 3.963268066109728*^9, 
+  3.9632681153319597`*^9, 3.963268208826956*^9, 3.96335746462707*^9, 
+  3.963464974028236*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"5f389884-a021-427f-8922-06ce5d2dad96"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"array", "[", 
+  RowBox[{"{", 
+   RowBox[{"4", ",", "4"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.963268126358837*^9, 3.963268169509691*^9}},
+ CellLabel->
+  "In[751]:=",ExpressionUUID->"6ff7bd57-add8-445c-9860-3d25ee03404a"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"0", "0", "0", "0"},
+      {"0", "0", "0", "0"},
+      {"0", "0", "0", "0"},
+      {"0", "0", "0", "0"}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}], "\[NoBreak]", ")"}],
+   Function[BoxForm`e$, 
+    MatrixForm[BoxForm`e$]]], "//", "hungarian"}]], "Input",
+ CellChangeTimes->{{3.96326817368817*^9, 3.9632681756686087`*^9}},
+ CellLabel->"In[53]:=",ExpressionUUID->"7ff4a492-12b8-4b1e-9f5e-85ab8654e73f"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{3.963268175921053*^9, 3.96335746650749*^9, 
+  3.96335757913614*^9},
+ CellLabel->
+  "During evaluation of \
+In[53]:=",ExpressionUUID->"f9cdeb2c-9028-4d3f-95b0-657473e8323e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["Total cost: ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.963268175921053*^9, 3.96335746650749*^9, 
+  3.963357579136776*^9},
+ CellLabel->
+  "During evaluation of \
+In[53]:=",ExpressionUUID->"c946197e-4e19-4b3a-a534-9d4e20a1dc2f"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{3.963268175921053*^9, 3.96335746650749*^9, 
+  3.9633575791377583`*^9},
+ CellLabel->
+  "During evaluation of \
+In[53]:=",ExpressionUUID->"850e6f31-df0f-4642-8438-f421b5e3d930"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"array", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}], ",", 
+   RowBox[{"-", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.96335747272187*^9, 3.96335747727566*^9}},
+ CellLabel->
+  "In[390]:=",ExpressionUUID->"73ff7e13-fcf0-4337-a52c-9cbdfb128468"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}], "\[NoBreak]", ")"}],
+   Function[BoxForm`e$, 
+    MatrixForm[BoxForm`e$]]], "//", "hungarian"}]], "Input",
+ CellChangeTimes->{{3.9633574782655354`*^9, 3.9633574804175177`*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"9d4a0194-4d51-4275-9a85-fe1926bf00e8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{3.96335748182692*^9, 3.963357577664412*^9},
+ CellLabel->
+  "During evaluation of \
+In[52]:=",ExpressionUUID->"57025e35-cf44-48c0-8c39-a5e024bccf69"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "4"}]}],
+  SequenceForm["Total cost: ", -4],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.96335748182692*^9, 3.963357577664981*^9},
+ CellLabel->
+  "During evaluation of \
+In[52]:=",ExpressionUUID->"9fad2437-6d90-44d8-9b37-4563e8e02f61"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{3.96335748182692*^9, 3.96335757766714*^9},
+ CellLabel->
+  "During evaluation of \
+In[52]:=",ExpressionUUID->"212ffc51-92e8-4f4b-ad81-9f4746747f46"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"10", "10", "8"},
+      {"9", "8", "1"},
+      {"9", "7", "4"}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}], "\[NoBreak]", ")"}],
+   Function[BoxForm`e$, 
+    MatrixForm[BoxForm`e$]]], "//", "hungarian"}]], "Input",
+ CellLabel->"In[54]:=",ExpressionUUID->"a486af59-5184-49c3-ab53-d1443087cb12"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2"}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.963357551749461*^9, 3.96335758052943*^9}},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"b521aaf7-71a1-44fe-b357-f7d4de0ac859"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", "18"}],
+  SequenceForm["Total cost: ", 18],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.963357551749461*^9, 3.963357580530005*^9}},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"140ddd07-e71f-4c84-981d-92d50b23d8dc"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{{3.963357551749461*^9, 3.963357580530871*^9}},
+ CellLabel->
+  "During evaluation of \
+In[54]:=",ExpressionUUID->"bcf8385e-d821-455f-933c-41c64af0e542"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"adjacency", "[", "1", "]"}]], "Input",
+ CellChangeTimes->{{3.963357566192398*^9, 3.963357568074596*^9}},
+ CellLabel->"In[50]:=",ExpressionUUID->"b3d105c2-66aa-4d4b-a0de-27ba2b2dcef1"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", "}"}], "a"},
+          {"a", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "hungarian"}]], "Input",
+ CellChangeTimes->{{3.963357570587928*^9, 3.963357573180121*^9}},
+ CellLabel->"In[51]:=",ExpressionUUID->"a6386407-93ea-46b4-adac-b14e9dfff988"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1"}], "}"}], "}"}]], "Print",
+ CellChangeTimes->{3.963357573476232*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"11723752-603a-4fd7-8ac1-999d8c2b1e69"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total cost: \"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["Total cost: ", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.963357573476858*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"a966574b-2dd7-49dc-a40c-ed1d0179a276"],
+
+Cell[BoxData["\<\"\\!\\(\\*StyleBox[RowBox[{StyleBox[\\\"{\\\", FontSize -> \
+9], RowBox[{RowBox[{\\\"{\\\", \\\"1\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \
+\\\"1\\\"], \\\"}\\\"}], \\\",\\\", RowBox[{\\\"{\\\", \\\"2\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"2\\\"], \\\"}\\\"}], \\\",\\\", \\\"\[Ellipsis]\\\
+\", \\\",\\\", RowBox[{\\\"{\\\", \\\"n\\\", \\\",\\\", \
+SubscriptBox[\\\"x\\\", \\\"n\\\"], \\\"}\\\"}]}], StyleBox[\\\"}\\\", \
+FontSize -> 9], \\\" ->\\\", \\\" each\\\", \\\" pair\\\", \\\" \\\", \
+RowBox[{\\\"{\\\", \\\"i\\\", \\\",\\\", SubscriptBox[\\\"x\\\", \\\"i\\\"], \
+\\\"}\\\"}], \\\" indicates\\\", \\\" that\\\", \\\" the\\\", \\\" \\\", \
+SuperscriptBox[\\\"i\\\", \\\"th\\\"], \\\" worker\\\", \\\" takes\\\", \\\" \
+the\\\", \\\" \\\", SuperscriptBox[SubscriptBox[\\\"x\\\", \\\"i\\\"], \\\"th\
+\\\"], \\\" job.\\\"}], 10]\\)\"\>"], "Print",
+ CellChangeTimes->{3.963357573477543*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"0493bf6c-e276-450f-877a-64ff46bdce5a"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{752, 551},
+WindowMargins->{{Automatic, 53}, {Automatic, 6}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d1b62e9a-781f-4532-893a-79b1cc1fd9aa"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 211, 3, 30, "Input",ExpressionUUID->"601cea25-c654-4a0b-9afc-77eae2368ba3"],
+Cell[CellGroupData[{
+Cell[794, 27, 1426, 39, 117, "Input",ExpressionUUID->"05c7daba-bf29-4586-97da-26f6408a0a09"],
+Cell[CellGroupData[{
+Cell[2245, 70, 825, 20, 24, "Print",ExpressionUUID->"740a9e6a-443d-487b-8b91-ecbd37e1130d"],
+Cell[3073, 92, 699, 14, 24, "Print",ExpressionUUID->"1aa85d2f-db76-4ae2-aa74-f51478cf950d"],
+Cell[3775, 108, 1411, 21, 27, "Print",ExpressionUUID->"e3e8e62f-27fd-496d-a480-918c3858afcf"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5235, 135, 810, 21, 79, "Input",ExpressionUUID->"dcfaacba-0a53-43f3-a85b-80fa6ddb28f8"],
+Cell[CellGroupData[{
+Cell[6070, 160, 552, 16, 24, "Print",ExpressionUUID->"dbadaaad-1173-4220-9300-12434a9581ca"],
+Cell[6625, 178, 428, 10, 24, "Print",ExpressionUUID->"6896da2d-be22-40d9-999a-9ea71b0458b6"],
+Cell[7056, 190, 1140, 17, 27, "Print",ExpressionUUID->"5f389884-a021-427f-8922-06ce5d2dad96"]
+}, Open  ]]
+}, Open  ]],
+Cell[8223, 211, 254, 6, 30, "Input",ExpressionUUID->"6ff7bd57-add8-445c-9860-3d25ee03404a"],
+Cell[CellGroupData[{
+Cell[8502, 221, 749, 20, 79, "Input",ExpressionUUID->"7ff4a492-12b8-4b1e-9f5e-85ab8654e73f"],
+Cell[CellGroupData[{
+Cell[9276, 245, 480, 15, 24, "Print",ExpressionUUID->"f9cdeb2c-9028-4d3f-95b0-657473e8323e"],
+Cell[9759, 262, 353, 9, 24, "Print",ExpressionUUID->"c946197e-4e19-4b3a-a534-9d4e20a1dc2f"],
+Cell[10115, 273, 1071, 16, 27, "Print",ExpressionUUID->"850e6f31-df0f-4642-8438-f421b5e3d930"]
+}, Open  ]]
+}, Open  ]],
+Cell[11213, 293, 296, 8, 30, "Input",ExpressionUUID->"73ff7e13-fcf0-4337-a52c-9cbdfb128468"],
+Cell[CellGroupData[{
+Cell[11534, 305, 1120, 36, 79, "Input",ExpressionUUID->"9d4a0194-4d51-4275-9a85-fe1926bf00e8"],
+Cell[CellGroupData[{
+Cell[12679, 345, 456, 14, 24, "Print",ExpressionUUID->"57025e35-cf44-48c0-8c39-a5e024bccf69"],
+Cell[13138, 361, 348, 9, 24, "Print",ExpressionUUID->"9fad2437-6d90-44d8-9b37-4563e8e02f61"],
+Cell[13489, 372, 1043, 15, 27, "Print",ExpressionUUID->"212ffc51-92e8-4f4b-ad81-9f4746747f46"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14581, 393, 641, 18, 61, "Input",ExpressionUUID->"a486af59-5184-49c3-ab53-d1443087cb12"],
+Cell[CellGroupData[{
+Cell[15247, 415, 399, 12, 24, "Print",ExpressionUUID->"b521aaf7-71a1-44fe-b357-f7d4de0ac859"],
+Cell[15649, 429, 333, 8, 24, "Print",ExpressionUUID->"140ddd07-e71f-4c84-981d-92d50b23d8dc"],
+Cell[15985, 439, 1047, 15, 27, "Print",ExpressionUUID->"bcf8385e-d821-455f-933c-41c64af0e542"]
+}, Open  ]]
+}, Open  ]],
+Cell[17059, 458, 207, 3, 30, "Input",ExpressionUUID->"b3d105c2-66aa-4d4b-a0de-27ba2b2dcef1"],
+Cell[CellGroupData[{
+Cell[17291, 465, 1219, 34, 63, "Input",ExpressionUUID->"a6386407-93ea-46b4-adac-b14e9dfff988"],
+Cell[CellGroupData[{
+Cell[18535, 503, 243, 7, 24, "Print",ExpressionUUID->"11723752-603a-4fd7-8ac1-999d8c2b1e69"],
+Cell[18781, 512, 307, 8, 24, "Print",ExpressionUUID->"a966574b-2dd7-49dc-a40c-ed1d0179a276"],
+Cell[19091, 522, 1023, 15, 27, "Print",ExpressionUUID->"0493bf6c-e276-450f-877a-64ff46bdce5a"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

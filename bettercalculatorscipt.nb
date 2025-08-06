@@ -1,0 +1,550 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24323,        540]
+NotebookOptionsPosition[     23974,        526]
+NotebookOutlinePosition[     24367,        542]
+CellTagsIndexPosition[     24324,        539]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"BC", " ", "=", " ", 
+   RowBox[{"BetterCalculator", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BetterCalculator", "[", "]"}], ":=", 
+  RowBox[{"Panel", "[", 
+   RowBox[{"DynamicModule", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"NP", "=", "0"}], ",", 
+       RowBox[{"INT", "=", "0"}], ",", 
+       RowBox[{"MP", "=", "0"}], ",", 
+       RowBox[{"previous", "=", "0"}], ",", 
+       RowBox[{"FV", "=", "0"}], ",", 
+       RowBox[{"PRINCIPAL", "=", "0"}], ",", 
+       RowBox[{"PaymentMode", "=", 
+        RowBox[{"-", "1"}]}], ",", 
+       RowBox[{"PaymentModeString", "=", "\"\<Payment \>\""}], ",", 
+       RowBox[{"PaymentInterval", "=", "12"}], ",", 
+       RowBox[{"PaymentStyle", "=", "Bold"}], ",", 
+       RowBox[{"InvestmentStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"DayStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"WeekStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"FortnightStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"MonthStyle", "=", "Bold"}], ",", 
+       RowBox[{"QuarterStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"YearStyle", "=", "\"\<\>\""}], ",", 
+       RowBox[{"SelectedFont", "=", "\"\<Verdana\>\""}], ",", 
+       RowBox[{
+       "message", "=", 
+        "\"\<Please enter your variables then press calculate the \
+unknown.\>\""}], ",", "result"}], "}"}], ",", 
+     RowBox[{"Grid", "[", 
+      RowBox[{
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"(*", 
+          RowBox[{"LEFT", " ", "COLUMN"}], "*)"}], 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{
+             "\"\<Financial Calculator\[Trademark] v6.9 Beta\>\"", ",", 
+              "Bold", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Mode: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{
+              RowBox[{"Dynamic", "[", 
+               RowBox[{"StringForm", "[", 
+                RowBox[{"PaymentModeString", "<>", "\"\<Interval\>\""}], 
+                "]"}], "]"}], ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Number of Years: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Interest Rate: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{
+              RowBox[{"Dynamic", "[", 
+               RowBox[{"StringForm", "[", 
+                RowBox[{"PaymentModeString", "<>", "\"\<Value\>\""}], "]"}], 
+               "]"}], ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Future Value: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Present Value: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Submit: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Result: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{"\"\<Credits: \>\"", ",", 
+              RowBox[{"FontFamily", "->", "SelectedFont"}], ",", 
+              RowBox[{"FontSize", "->", "10"}], ",", 
+              RowBox[{"FontColor", "->", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.69", ",", "0.69", ",", "0.69", ",", "1"}], 
+                "]"}]}]}], "]"}]}], "}"}], ",", 
+          RowBox[{"(*", 
+           RowBox[{"RIGHT", " ", "COLUMN"}], "*)"}], 
+          RowBox[{"{", 
+           RowBox[{"\"\<\>\"", ",", 
+            RowBox[{"ButtonBar", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Payment\>\"", ",", "PaymentStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentMode", "=", 
+                    RowBox[{"-", "1"}]}], ",", 
+                    RowBox[{"PaymentStyle", "=", "Bold"}], ",", 
+                    RowBox[{"InvestmentStyle", "=", "\"\<\>\""}], ",", 
+                    RowBox[{"PaymentModeString", "=", "\"\<Payment \>\""}]}], 
+                   "}"}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{
+                   "\"\<Investment\>\"", ",", "InvestmentStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentMode", "=", "1"}], ",", 
+                    RowBox[{"InvestmentStyle", "=", "Bold"}], ",", 
+                    RowBox[{"PaymentStyle", "=", "\"\<\>\""}], ",", 
+                    RowBox[{
+                    "PaymentModeString", "=", "\"\<Investment \>\""}]}], 
+                   "}"}], "]"}]}]}], "}"}], ",", 
+              RowBox[{"ImageSize", "->", 
+               RowBox[{"{", 
+                RowBox[{"225", ",", "20"}], "}"}]}], ",", 
+              RowBox[{"Appearance", "->", "\"\<DialogBox\>\""}]}], "]"}], ",", 
+            RowBox[{"ButtonBar", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Day\>\"", ",", "DayStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "365"}], ",", 
+                    RowBox[{"DayStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "WeekStyle", ",", "FortnightStyle", ",", "MonthStyle", 
+                    ",", "QuarterStyle", ",", "YearStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], "]"}]}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Week\>\"", ",", "WeekStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "52"}], ",", 
+                    RowBox[{"WeekStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "DayStyle", ",", "FortnightStyle", ",", "MonthStyle", ",",
+                     "QuarterStyle", ",", "YearStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], "]"}]}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Fortnight\>\"", ",", "FortnightStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "26"}], ",", 
+                    RowBox[{"FortnightStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "DayStyle", ",", "WeekStyle", ",", "MonthStyle", ",", 
+                    "QuarterStyle", ",", "YearStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], "]"}]}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Month\>\"", ",", "MonthStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "12"}], ",", 
+                    RowBox[{"MonthStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "DayStyle", ",", "WeekStyle", ",", "FortnightStyle", ",", 
+                    "QuarterStyle", ",", "YearStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], "]"}]}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Quarter\>\"", ",", "QuarterStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "4"}], ",", 
+                    RowBox[{"QuarterStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "DayStyle", ",", "WeekStyle", ",", "FortnightStyle", ",", 
+                    "MonthStyle", ",", "YearStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], "]"}]}], 
+                ",", 
+                RowBox[{
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"Style", "[", 
+                   RowBox[{"\"\<Year\>\"", ",", "YearStyle", ",", 
+                    RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], 
+                  "]"}], ":>", 
+                 RowBox[{"Dynamic", "[", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"PaymentInterval", "=", "1"}], ",", 
+                    RowBox[{"YearStyle", "=", "Bold"}], ",", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "DayStyle", ",", "WeekStyle", ",", "FortnightStyle", ",", 
+                    "MonthStyle", ",", "QuarterStyle"}], "}"}], "=", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<\>\"", ",", "\"\<\>\"", ",", "\"\<\>\"", ",", 
+                    "\"\<\>\"", ",", "\"\<\>\""}], "}"}]}]}], "}"}], 
+                  "]"}]}]}], "}"}], ",", 
+              RowBox[{"ImageSize", "->", 
+               RowBox[{"{", 
+                RowBox[{"75", ",", "20"}], "}"}]}], ",", 
+              RowBox[{"Appearance", "->", "\"\<DialogBox\>\""}]}], "]"}], ",", 
+            RowBox[{"InputField", "[", 
+             RowBox[{
+              RowBox[{"Dynamic", "[", "NP", "]"}], ",", "Number"}], "]"}], 
+            ",", 
+            RowBox[{"InputField", "[", 
+             RowBox[{"Dynamic", "[", "INT", "]"}], "]"}], ",", 
+            RowBox[{"InputField", "[", 
+             RowBox[{"Dynamic", "[", "MP", "]"}], "]"}], ",", 
+            RowBox[{"InputField", "[", 
+             RowBox[{"Dynamic", "[", "FV", "]"}], "]"}], ",", 
+            RowBox[{"InputField", "[", 
+             RowBox[{"Dynamic", "[", "PRINCIPAL", "]"}], "]"}], ",", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"\"\<Calculate the unknown\>\"", ",", 
+                RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+              RowBox[{"DynamicModule", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                 "check", ",", "emptypars", ",", "unknown", ",", "valid", ",",
+                   "vars", ",", "index", ",", "vars2", ",", "fv"}], "}"}], 
+                ",", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"fv", "[", 
+                   RowBox[{
+                   "pv_", ",", "i_", ",", "c_", ",", "np_", ",", "r_"}], 
+                   "]"}], ":=", 
+                  RowBox[{"N", "[", 
+                   RowBox[{
+                    RowBox[{"pv", "*", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"i", "/", "c"}]}], ")"}], "^", "np"}]}], "+", 
+                    RowBox[{"r", "*", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"1", "+", 
+                    RowBox[{"i", "/", "c"}]}], ")"}], "^", "np"}], "-", "1"}],
+                     ")"}], "/", 
+                    RowBox[{"(", 
+                    RowBox[{"i", "/", "c"}], ")"}]}]}]}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"vars", "=", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"Unevaluated", "[", "NP", "]"}], ",", 
+                    RowBox[{"Unevaluated", "[", "INT", "]"}], ",", 
+                    RowBox[{"Unevaluated", "[", "MP", "]"}], ",", 
+                    RowBox[{"Unevaluated", "[", "FV", "]"}], ",", 
+                    RowBox[{"Unevaluated", "[", "PRINCIPAL", "]"}]}], "}"}]}],
+                  ";", "\[IndentingNewLine]", 
+                 RowBox[{"vars2", "=", 
+                  RowBox[{"Evaluate", "/@", "vars"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"valid", "=", 
+                  RowBox[{"Select", "[", 
+                   RowBox[{"vars2", ",", "NumericQ"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Length", "[", "valid", "]"}], "<", "4"}], ",", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"unknown", "=", "\"\<NEI\>\""}], ";", 
+                    RowBox[{"Goto", "[", "end", "]"}]}], ")"}]}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Length", "[", "valid", "]"}], ">", "4"}], ",", 
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"unknown", "=", "\"\<TMI\>\""}], ";", 
+                    RowBox[{"Goto", "[", "end", "]"}]}], ")"}]}], "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"index", "=", 
+                  RowBox[{
+                   RowBox[{"Position", "[", 
+                    RowBox[{"vars2", ",", 
+                    RowBox[{"Except", "[", 
+                    RowBox[{"_", "?", "NumericQ"}], "]"}], ",", "1"}], "]"}], 
+                   "[", 
+                   RowBox[{"[", 
+                    RowBox[{"2", ",", "1"}], "]"}], "]"}]}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"Check", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"Switch", "[", 
+                    RowBox[{"index", ",", "1", ",", 
+                    RowBox[{"result", "=", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"1", "/", "PaymentInterval"}], "*", "np"}], "/.", 
+                    " ", 
+                    RowBox[{
+                    RowBox[{"NSolve", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"fv", "[", 
+                    RowBox[{"PRINCIPAL", ",", 
+                    RowBox[{"INT", "/", "100"}], ",", "PaymentInterval", ",", 
+                    "np", ",", 
+                    RowBox[{"PaymentMode", "*", "MP"}]}], "]"}], "==", "FV"}],
+                     "&&", 
+                    RowBox[{"np", ">", "0"}]}], ",", "np", ",", "Reals"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+                    RowBox[{"(*", 
+                    RowBox[{"number", " ", "of", " ", "payments"}], "*)"}], 
+                    "2", ",", 
+                    RowBox[{"result", "=", 
+                    RowBox[{"int", "/.", " ", 
+                    RowBox[{
+                    RowBox[{"NSolve", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"fv", "[", 
+                    RowBox[{"PRINCIPAL", ",", 
+                    RowBox[{"int", "/", "100"}], ",", "PaymentInterval", ",", 
+                    
+                    RowBox[{"NP", "*", "PaymentInterval"}], ",", 
+                    RowBox[{"PaymentMode", "*", "MP"}]}], "]"}], "==", "FV"}],
+                     "&&", 
+                    RowBox[{"int", ">", "0"}]}], ",", "int", ",", "Reals"}], 
+                    "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+                    RowBox[{"(*", "interest", "*)"}], "3", ",", 
+                    RowBox[{"result", "=", 
+                    RowBox[{
+                    RowBox[{"PaymentMode", "*", "mp"}], "/.", " ", 
+                    RowBox[{
+                    RowBox[{"NSolve", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"fv", "[", 
+                    RowBox[{"PRINCIPAL", ",", 
+                    RowBox[{"INT", "/", "100"}], ",", "PaymentInterval", ",", 
+                    
+                    RowBox[{"NP", "*", "PaymentInterval"}], ",", "mp"}], 
+                    "]"}], "==", "FV"}], ",", "mp", ",", "Reals"}], "]"}], 
+                    "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+                    RowBox[{"(*", 
+                    RowBox[{"monthly", " ", "payment"}], "*)"}], "4", ",", 
+                    RowBox[{"result", "=", 
+                    RowBox[{"fv", "[", 
+                    RowBox[{"PRINCIPAL", ",", 
+                    RowBox[{"INT", "/", "100"}], ",", "PaymentInterval", ",", 
+                    
+                    RowBox[{"NP", "*", "PaymentInterval"}], ",", 
+                    RowBox[{"PaymentMode", "*", "MP"}]}], "]"}]}], ",", 
+                    RowBox[{"(*", 
+                    RowBox[{"future", " ", "value"}], "*)"}], "5", ",", 
+                    RowBox[{"result", "=", 
+                    RowBox[{"p", "/.", " ", 
+                    RowBox[{
+                    RowBox[{"NSolve", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"fv", "[", 
+                    RowBox[{"p", ",", 
+                    RowBox[{"INT", "/", "100"}], ",", "PaymentInterval", ",", 
+                    
+                    RowBox[{"NP", "*", "PaymentInterval"}], ",", 
+                    RowBox[{"PaymentMode", "*", "MP"}]}], "]"}], "==", "FV"}],
+                     ",", "p", ",", "Reals"}], "]"}], "[", 
+                    RowBox[{"[", "1", "]"}], "]"}]}]}], ",", 
+                    RowBox[{"(*", "principal", "*)"}], "\"\<NEI\>\"", ",", 
+                    RowBox[{
+                    "result", "=", "\"\<Not enough information.\>\""}], ",", 
+                    "\"\<TMI\>\"", ",", 
+                    RowBox[{
+                    "result", "=", "\"\<No unknown to solve for.\>\""}]}], 
+                    "]"}], ";"}], ",", 
+                   RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"PaymentMode", "==", "1"}], ",", 
+                    RowBox[{
+                    "result", "=", 
+                    "\"\<\\!\\(\\*RowBox[{\\\"NSolve unable to find solution. \
+This is likely because it diverges. Please check the sign of your \\\", \
+StyleBox[\\\"Investment Value\\\", \\\"TI\\\"]}]\\).\>\""}], ",", 
+                    RowBox[{
+                    "result", "=", 
+                    "\"\<\\!\\(\\*RowBox[{\\\"NSolve unable to find solution. \
+This is likely because it diverges. Please check the sign of your \\\", \
+StyleBox[\\\"Payment Value\\\", \\\"TI\\\"]}]\\).\>\""}]}], "]"}], ";"}]}], 
+                  "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"Label", "[", "end", "]"}], ";", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{"If", "[", 
+                  RowBox[{
+                   RowBox[{"!", 
+                    RowBox[{"StringQ", "[", "result", "]"}]}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Print", "[", 
+                    RowBox[{
+                    RowBox[{"Round", "[", 
+                    RowBox[{"result", ",", 
+                    SuperscriptBox["10", 
+                    RowBox[{"-", "6"}]]}], "]"}], "//", "N"}], "]"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+                 RowBox[{"message", "=", "result"}], ";"}]}], "]"}]}], "]"}], 
+            ",", 
+            RowBox[{"Dynamic", "[", 
+             RowBox[{"SetPrecision", "[", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"message", ",", 
+                 RowBox[{"FontFamily", "->", "SelectedFont"}]}], "]"}], ",", 
+               "12"}], "]"}], "]"}], ",", 
+            RowBox[{"Style", "[", 
+             RowBox[{
+             "\"\<\[Copyright] R.W, R.T\[Trademark], \
+L.A\[RegisteredTrademark] and Pepper Scott :3\>\"", ",", 
+              RowBox[{"FontSize", "->", "10"}], ",", 
+              RowBox[{"FontColor", "->", 
+               RowBox[{"RGBColor", "[", 
+                RowBox[{"0.69", ",", "0.69", ",", "0.69", ",", "1"}], 
+                "]"}]}]}], "]"}]}], "}"}]}], "}"}], "]"}], ",", 
+       RowBox[{"Alignment", "->", "Left"}], ",", 
+       RowBox[{"Spacings", "->", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "1"}], "}"}]}]}], "]"}]}], "]"}], 
+   "]"}]}]}], "Input",ExpressionUUID->"c42d84d1-c267-45a1-abc4-f86df0971263"]
+},
+WindowSize->{808, 911},
+WindowMargins->{{78, Automatic}, {20, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8c2a53f8-f459-4ed4-8e20-6690196b5352"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 23412, 504, 2069, "Input",ExpressionUUID->"c42d84d1-c267-45a1-abc4-f86df0971263"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

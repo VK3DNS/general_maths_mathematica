@@ -1,0 +1,1090 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     39792,       1082]
+NotebookOptionsPosition[     34637,        982]
+NotebookOutlinePosition[     35059,        999]
+CellTagsIndexPosition[     35016,        996]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"adjacency", "[", "3", "]"}]], "Input",
+ CellLabel->"In[37]:=",ExpressionUUID->"7eb20bab-62d1-487f-8445-e39c916bd007"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", "}"}], "a", "b", "c"},
+         {"a", "0", "\[Infinity]", "\[Infinity]"},
+         {"b", "\[Infinity]", "0", "\[Infinity]"},
+         {"c", "\[Infinity]", "\[Infinity]", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$, TableAlignments -> Center]]]], "Output",
+ CellChangeTimes->{3.9631897032682457`*^9},
+ CellLabel->
+  "Out[37]//TableForm=",ExpressionUUID->"73a12268-dcd8-4a0b-a6e6-\
+f3d39cfd9ee2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "f"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[38]:=",ExpressionUUID->"5933530b-1f58-4b3c-b36f-1d5f5a435f6c"],
+
+Cell["\<\
+Path: A D F 
+Dist: 20\
+\>", "Print",
+ CellChangeTimes->{3.9631897070415583`*^9},
+ CellLabel->
+  "During evaluation of \
+In[38]:=",ExpressionUUID->"25f2126b-96e8-4f9a-a89c-218d43511201"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", 
+            RowBox[{"a", ",", "f"}], "}"}], "a", "b", "c", "d", "e", "f"},
+          {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+          {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+          {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+          {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+          {"e", "\[Infinity]", "5", "14", "8", "0", "16"},
+          {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "pathfind"}]], "Input",
+ CellLabel->"In[39]:=",ExpressionUUID->"d6593722-92c7-4a45-8fbc-1d9073d69771"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"This matrix is not symmetric. If the graph is undirected, \
+check your input. Otherwise, you can safely ignore this message. \"\>"], \
+"Print",
+ CellChangeTimes->{3.963189710538494*^9},
+ CellLabel->
+  "During evaluation of \
+In[39]:=",ExpressionUUID->"24d8b72c-f4e3-4e57-95d5-ba6059cdaec1"],
+
+Cell["\<\
+Path: A D F 
+Dist: 20\
+\>", "Print",
+ CellChangeTimes->{3.963189710539846*^9},
+ CellLabel->
+  "During evaluation of \
+In[39]:=",ExpressionUUID->"2cffdf0b-f407-4dbc-9eda-95c999403c27"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", 
+            RowBox[{"a", ",", "f"}], "}"}], "a", "b", "c", "d", "e", "f"},
+          {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+          {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+          {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+          {"d", "16", "\[Infinity]", "18", "0", "8", "\[Infinity]"},
+          {"e", "\[Infinity]", "5", "14", "8", "0", "\[Infinity]"},
+          {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "\[Infinity]", 
+           "\[Infinity]", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "pathfind"}]], "Input",
+ CellLabel->"In[40]:=",ExpressionUUID->"ef789389-73de-40eb-a149-ddc0ed233c99"],
+
+Cell[CellGroupData[{
+
+Cell["Path: ", "Print",
+ CellChangeTimes->{3.963189719626606*^9},
+ CellLabel->
+  "During evaluation of \
+In[40]:=",ExpressionUUID->"25d6e6d3-bab3-4ab7-94cc-44f5804823ba"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"No path found between \"\>", "\[InvisibleSpace]", "\<\"A\"\>", 
+   "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "\<\"F\"\>", 
+   "\[InvisibleSpace]", "\<\". \"\>", 
+   "\[InvisibleSpace]", "\<\"Check your input. If you're sure it's correct, \
+this means the source is disconnected from the destination node\"\>"}],
+  SequenceForm[
+  "No path found between ", "A", " and ", "F", ". ", 
+   "Check your input. If you're sure it's correct, this means the source is \
+disconnected from the destination node"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.963189719627872*^9},
+ CellLabel->
+  "During evaluation of \
+In[40]:=",ExpressionUUID->"61c564ca-c6ee-491e-828a-7149a1af1d3e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", 
+            RowBox[{"a", ",", "f"}], "}"}], "a", "b", "c", "d", "e", "f"},
+          {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+          {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+          {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+          {"d", "16", "\[Infinity]", "18", "0", "7", "\[Infinity]"},
+          {"e", "\[Infinity]", "5", "14", "8", "0", "\[Infinity]"},
+          {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "\[Infinity]", 
+           "\[Infinity]", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "pathfind"}]], "Input",
+ CellLabel->"In[41]:=",ExpressionUUID->"9b5e4605-7820-4474-bc8c-c10de736998c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"This matrix is not symmetric. If the graph is undirected, \
+check your input. Otherwise, you can safely ignore this message. \"\>"], \
+"Print",
+ CellChangeTimes->{3.963189724482689*^9},
+ CellLabel->
+  "During evaluation of \
+In[41]:=",ExpressionUUID->"71067a92-a988-4b69-9803-77f823254ce4"],
+
+Cell["Path: ", "Print",
+ CellChangeTimes->{3.963189724483836*^9},
+ CellLabel->
+  "During evaluation of \
+In[41]:=",ExpressionUUID->"19a48889-f94f-4d1d-bd30-830b8846bbe3"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"No path found between \"\>", "\[InvisibleSpace]", "\<\"A\"\>", 
+   "\[InvisibleSpace]", "\<\" and \"\>", "\[InvisibleSpace]", "\<\"F\"\>", 
+   "\[InvisibleSpace]", "\<\". \"\>", 
+   "\[InvisibleSpace]", "\<\"Check your input. If you're sure it's correct, \
+this means the source is disconnected from the destination node\"\>"}],
+  SequenceForm[
+  "No path found between ", "A", " and ", "F", ". ", 
+   "Check your input. If you're sure it's correct, this means the source is \
+disconnected from the destination node"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.963189724485868*^9},
+ CellLabel->
+  "During evaluation of \
+In[41]:=",ExpressionUUID->"8ce59188-2ecb-4905-b666-ab8a90289d98"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", 
+            RowBox[{"a", ",", "a"}], "}"}], "a", "b", "c", "d", "e", "f"},
+          {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+          {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+          {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+          {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+          {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+          {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "pathfind"}]], "Input",
+ CellLabel->"In[42]:=",ExpressionUUID->"aec87ec6-cfed-4061-a732-8ca49f5278fb"],
+
+Cell["\<\
+Path: A 
+Dist: 0\
+\>", "Print",
+ CellChangeTimes->{3.963189729034593*^9},
+ CellLabel->
+  "During evaluation of \
+In[42]:=",ExpressionUUID->"e1046f0b-a7c9-4f24-abb5-4b98884f9715"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "ddddd"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[43]:=",ExpressionUUID->"1f83ed07-1c65-4dce-a9e7-d5384d8f16b3"],
+
+Cell[BoxData["\<\"Please check the terminals. One or more symbols isn't \
+recognised.\"\>"], "Print",
+ CellChangeTimes->{3.96318974081951*^9},
+ CellLabel->
+  "During evaluation of \
+In[43]:=",ExpressionUUID->"8b6848ec-2781-4c9f-a53d-4a41bf06edde"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "2.2"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[44]:=",ExpressionUUID->"2b9bd008-8927-4c30-a8a0-6dc32803d974"],
+
+Cell[BoxData["\<\"Please use integers for the terminals.\"\>"], "Print",
+ CellChangeTimes->{3.963189744276784*^9},
+ CellLabel->
+  "During evaluation of \
+In[44]:=",ExpressionUUID->"c739f681-fc4e-42b1-910a-39ed69dde69b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "f", ",", "b", ",", "c", ",", "d"}], "}"}], "a", 
+          "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[45]:=",ExpressionUUID->"57c22b47-1528-423a-b23d-d90ce2b0be85"],
+
+Cell["\<\
+Path: A D F D E B C D 
+Dist: 66\
+\>", "Print",
+ CellChangeTimes->{3.9631897499605207`*^9},
+ CellLabel->
+  "During evaluation of \
+In[45]:=",ExpressionUUID->"32dfbebd-dc8a-4188-83b0-1d7c0181e53b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", "a", "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[46]:=",ExpressionUUID->"509f1b8e-2065-406d-a32e-0c879cd58589"],
+
+Cell[BoxData["\<\"Please input a source and destination\"\>"], "Print",
+ CellChangeTimes->{3.9631897549491796`*^9},
+ CellLabel->
+  "During evaluation of \
+In[46]:=",ExpressionUUID->"270d3244-38e4-49a4-9a4a-f56e11fb8568"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[47]:=",ExpressionUUID->"790fcd8c-372b-434d-b0cb-b3667b6caf7d"],
+
+Cell[BoxData["\<\"Please input a source and destination\"\>"], "Print",
+ CellChangeTimes->{3.96318975841115*^9},
+ CellLabel->
+  "During evaluation of \
+In[47]:=",ExpressionUUID->"d38b87dd-3179-4804-8b80-873396c0b743"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"f", ",", "e", ",", "c"}], "}"}], "a", "b", "c", "d", "e", 
+          "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", "15", "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[48]:=",ExpressionUUID->"7b3763dd-9c92-4aba-a1f2-b4a58be2e518"],
+
+Cell["\<\
+Path: F D E C 
+Dist: 26\
+\>", "Print",
+ CellChangeTimes->{3.963189762644042*^9},
+ CellLabel->
+  "During evaluation of \
+In[48]:=",ExpressionUUID->"1e2fa3aa-e818-45c0-9e2c-297a58400765"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", 
+          RowBox[{"-", "15"}]},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", 
+          RowBox[{"-", "15"}], "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], "\[NoBreak]", ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", "pathfind"}]], "Input",
+ CellLabel->"In[49]:=",ExpressionUUID->"c00e65b3-0c80-4fa5-97ef-5a79d7bcb785"],
+
+Cell[BoxData["\<\"Negative weights are present. This algorithm is not valid \
+if there is a negative cycle in the graph. The operation has been aborted. If \
+you're really really super sure you want to continue, replace the pathfind \
+command with '\\!\\(\\*StyleBox[\\\"AdjacencyForm\\\", \
+\\\"TI\\\"]\\)//pathfind[#, True]&' if you're using // syntax or \
+'pathfind[\\!\\(\\*StyleBox[\\\"AdjacencyForm\\\", \\\"TI\\\"]\\), True]' if \
+you're using standard syntax.\"\>"], "Print",
+ CellChangeTimes->{3.963189767992881*^9},
+ CellLabel->
+  "During evaluation of \
+In[49]:=",ExpressionUUID->"3da5081a-41cb-420b-8c8a-b4cf7839f668"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", 
+          RowBox[{"-", "15"}]},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", 
+          RowBox[{"-", "15"}], "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", 
+  RowBox[{
+   RowBox[{"pathfind", "[", 
+    RowBox[{"#", ",", "True"}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[50]:=",ExpressionUUID->"ca431d7e-04a3-4032-add7-b219b4039513"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Negative cycle protection is overridden.\"\>"], "Print",
+ CellChangeTimes->{3.963189772393673*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"e5da3aed-e771-461e-be36-7354387607e0"],
+
+Cell["Path: ", "Print",
+ CellChangeTimes->{3.963189772395228*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"9ade892e-34af-432a-aea5-f9dd60ec12d8"],
+
+Cell[BoxData["\<\"Negative cycle detected. Operation has been aborted.\"\>"], \
+"Print",
+ CellChangeTimes->{3.9631897723962708`*^9},
+ CellLabel->
+  "During evaluation of \
+In[50]:=",ExpressionUUID->"733fc056-967d-4e93-b43e-a7f340473c7f"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{GridBox[{
+    {"\"\<\>\"", "TO"},
+    {"FROM", 
+     TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+         {
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}], "a", "b", "c", "d", "e", "f"},
+         {"a", "0", "18", "20", "16", "\[Infinity]", "\[Infinity]"},
+         {"b", "18", "0", "11", "\[Infinity]", "5", "\[Infinity]"},
+         {"c", "20", "11", "0", "18", "14", "\[Infinity]"},
+         {"d", "16", "\[Infinity]", "18", "0", "8", "4"},
+         {"e", "\[Infinity]", "5", "14", "8", "0", "15"},
+         {"f", "\[Infinity]", "\[Infinity]", "\[Infinity]", "4", 
+          RowBox[{"-", "1"}], "0"}
+        },
+        GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.4]}, 
+            Offset[0.2]}}], ")"}],
+      Function[BoxForm`e$, 
+       MatrixForm[BoxForm`e$]]]}
+   },
+   GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}], "//", 
+  RowBox[{
+   RowBox[{"pathfind", "[", 
+    RowBox[{"#", ",", "True"}], "]"}], "&"}]}]], "Input",
+ CellLabel->"In[51]:=",ExpressionUUID->"5bdcdddc-b73a-46e9-b54a-ffecbf47820c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"Negative cycle protection is overridden.\"\>"], "Print",
+ CellChangeTimes->{3.963189782292832*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"1af76fe4-f950-4e77-84d5-b11e5cdb34b9"],
+
+Cell[BoxData["\<\"This matrix is not symmetric. If the graph is undirected, \
+check your input. Otherwise, you can safely ignore this message. \"\>"], \
+"Print",
+ CellChangeTimes->{3.96318978229346*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"30f2dc39-cc9f-40cc-8941-395137ca8e36"],
+
+Cell["\<\
+Path: A B 
+Dist: 18\
+\>", "Print",
+ CellChangeTimes->{3.9631897822944803`*^9},
+ CellLabel->
+  "During evaluation of \
+In[51]:=",ExpressionUUID->"b3481b81-99e3-4be2-bcb2-deed84d1fc29"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"adjacency", "[", "3", "]"}]], "Input",
+ CellChangeTimes->{{3.963268277881576*^9, 3.963268281253028*^9}},
+ CellLabel->
+  "In[755]:=",ExpressionUUID->"d14e697f-530f-4f14-91e6-d674035d5d42"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", 
+            RowBox[{"a", ",", "c"}], "}"}], "a", "b", "c"},
+          {"a", "0", "2", "3"},
+          {"b", "2", "0", "4"},
+          {"c", "3", "4", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//", 
+  "pathfind"}]], "Input",
+ CellChangeTimes->{{3.963268284982951*^9, 3.963268301199665*^9}},
+ CellLabel->
+  "In[756]:=",ExpressionUUID->"f2900945-f60f-451e-8292-919a76a0c071"],
+
+Cell["\<\
+Path: A C 
+Dist: 3\
+\>", "Print",
+ CellChangeTimes->{3.963268301414566*^9},
+ CellLabel->
+  "During evaluation of \
+In[756]:=",ExpressionUUID->"2fe6ba9c-02aa-4044-b4e0-ed209ed0aa6e"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"array", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3"}], "}"}], ",", "\[Infinity]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.963268335515472*^9, 3.96326834077072*^9}},
+ CellLabel->
+  "In[757]:=",ExpressionUUID->"d233afc7-6bd1-4592-ab9e-7d7fdbc8ca34"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"\[Infinity]", "\[Infinity]", "\[Infinity]"},
+      {"\[Infinity]", "\[Infinity]", "\[Infinity]"},
+      {"\[Infinity]", "\[Infinity]", "\[Infinity]"}
+     },
+     GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}}], "\[NoBreak]", ")"}],
+   Function[BoxForm`e$, 
+    MatrixForm[BoxForm`e$]]], "//", "AdjacencyForm"}]], "Input",
+ CellChangeTimes->{{3.9632683451045513`*^9, 3.9632683463852253`*^9}},
+ CellLabel->
+  "In[758]:=",ExpressionUUID->"e85aa0af-8b0b-4dba-9973-f08b2e4db350"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[GridBox[{
+     {"\"\<\>\"", "TO"},
+     {"FROM", 
+      TagBox[
+       RowBox[{"(", "\[NoBreak]", GridBox[{
+          {
+           RowBox[{"{", "}"}], "a", "b", "c"},
+          {"a", "0", "\[Infinity]", "\[Infinity]"},
+          {"b", "\[Infinity]", "0", "\[Infinity]"},
+          {"c", "\[Infinity]", "\[Infinity]", "0"}
+         },
+         GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+         GridBoxSpacings->{"Columns" -> {
+             Offset[0.27999999999999997`], {
+              Offset[0.7]}, 
+             Offset[0.27999999999999997`]}, "Rows" -> {
+             Offset[0.2], {
+              Offset[0.4]}, 
+             Offset[0.2]}}], "\[NoBreak]", ")"}],
+       Function[BoxForm`e$, 
+        MatrixForm[BoxForm`e$]]]}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Center}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}],
+   Function[BoxForm`e$, 
+    TableForm[BoxForm`e$, TableAlignments -> Center]]], "//"}]], "Input",
+ CellChangeTimes->{{3.963268348869169*^9, 
+  3.9632683489858913`*^9}},ExpressionUUID->"30b6ba99-d365-4620-86f7-\
+97c68f6bf79f"]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 130}, {Automatic, 0}},
+Magnification:>2. Inherited,
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"45cca3b1-b634-4a6a-bea8-472bded5d260"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 141, 2, 60, "Input",ExpressionUUID->"7eb20bab-62d1-487f-8445-e39c916bd007"],
+Cell[724, 26, 1292, 36, 234, "Output",ExpressionUUID->"73a12268-dcd8-4a0b-a6e6-f3d39cfd9ee2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2053, 67, 1462, 35, 302, "Input",ExpressionUUID->"5933530b-1f58-4b3c-b36f-1d5f5a435f6c"],
+Cell[3518, 104, 195, 7, 82, "Print",ExpressionUUID->"25f2126b-96e8-4f9a-a89c-218d43511201"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3750, 116, 1589, 39, 302, "Input",ExpressionUUID->"d6593722-92c7-4a45-8fbc-1d9073d69771"],
+Cell[CellGroupData[{
+Cell[5364, 159, 308, 6, 88, "Print",ExpressionUUID->"24d8b72c-f4e3-4e57-95d5-ba6059cdaec1"],
+Cell[5675, 167, 193, 7, 82, "Print",ExpressionUUID->"2cffdf0b-f407-4dbc-9eda-95c999403c27"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5917, 180, 1639, 40, 302, "Input",ExpressionUUID->"ef789389-73de-40eb-a149-ddc0ed233c99"],
+Cell[CellGroupData[{
+Cell[7581, 224, 170, 4, 48, "Print",ExpressionUUID->"25d6e6d3-bab3-4ab7-94cc-44f5804823ba"],
+Cell[7754, 230, 744, 15, 126, "Print",ExpressionUUID->"61c564ca-c6ee-491e-828a-7149a1af1d3e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8547, 251, 1639, 40, 302, "Input",ExpressionUUID->"9b5e4605-7820-4474-bc8c-c10de736998c"],
+Cell[CellGroupData[{
+Cell[10211, 295, 308, 6, 88, "Print",ExpressionUUID->"71067a92-a988-4b69-9803-77f823254ce4"],
+Cell[10522, 303, 170, 4, 48, "Print",ExpressionUUID->"19a48889-f94f-4d1d-bd30-830b8846bbe3"],
+Cell[10695, 309, 744, 15, 126, "Print",ExpressionUUID->"8ce59188-2ecb-4905-b666-ab8a90289d98"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11488, 330, 1589, 39, 302, "Input",ExpressionUUID->"aec87ec6-cfed-4061-a732-8ca49f5278fb"],
+Cell[13080, 371, 188, 7, 82, "Print",ExpressionUUID->"e1046f0b-a7c9-4f24-abb5-4b98884f9715"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13305, 383, 1466, 35, 302, "Input",ExpressionUUID->"1f83ed07-1c65-4dce-a9e7-d5384d8f16b3"],
+Cell[14774, 420, 247, 5, 48, "Print",ExpressionUUID->"8b6848ec-2781-4c9f-a53d-4a41bf06edde"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15058, 430, 1464, 35, 302, "Input",ExpressionUUID->"2b9bd008-8927-4c30-a8a0-6dc32803d974"],
+Cell[16525, 467, 219, 4, 48, "Print",ExpressionUUID->"c739f681-fc4e-42b1-910a-39ed69dde69b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16781, 476, 1503, 36, 302, "Input",ExpressionUUID->"57c22b47-1528-423a-b23d-d90ce2b0be85"],
+Cell[18287, 514, 205, 7, 82, "Print",ExpressionUUID->"32dfbebd-dc8a-4188-83b0-1d7c0181e53b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18529, 526, 1430, 34, 302, "Input",ExpressionUUID->"509f1b8e-2065-406d-a32e-0c879cd58589"],
+Cell[19962, 562, 220, 4, 48, "Print",ExpressionUUID->"270d3244-38e4-49a4-9a4a-f56e11fb8568"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20219, 571, 1425, 34, 302, "Input",ExpressionUUID->"790fcd8c-372b-434d-b0cb-b3667b6caf7d"],
+Cell[21647, 607, 217, 4, 48, "Print",ExpressionUUID->"d38b87dd-3179-4804-8b80-873396c0b743"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21901, 616, 1483, 36, 302, "Input",ExpressionUUID->"7b3763dd-9c92-4aba-a1f2-b4a58be2e518"],
+Cell[23387, 654, 195, 7, 82, "Print",ExpressionUUID->"1e2fa3aa-e818-45c0-9e2c-297a58400765"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23619, 666, 1514, 37, 302, "Input",ExpressionUUID->"c00e65b3-0c80-4fa5-97ef-5a79d7bcb785"],
+Cell[25136, 705, 630, 10, 164, "Print",ExpressionUUID->"3da5081a-41cb-420b-8c8a-b4cf7839f668"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25803, 720, 1575, 40, 302, "Input",ExpressionUUID->"ca431d7e-04a3-4032-add7-b219b4039513"],
+Cell[CellGroupData[{
+Cell[27403, 764, 221, 4, 48, "Print",ExpressionUUID->"e5da3aed-e771-461e-be36-7354387607e0"],
+Cell[27627, 770, 170, 4, 48, "Print",ExpressionUUID->"9ade892e-34af-432a-aea5-f9dd60ec12d8"],
+Cell[27800, 776, 237, 5, 48, "Print",ExpressionUUID->"733fc056-967d-4e93-b43e-a7f340473c7f"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28086, 787, 1548, 39, 302, "Input",ExpressionUUID->"5bdcdddc-b73a-46e9-b54a-ffecbf47820c"],
+Cell[CellGroupData[{
+Cell[29659, 830, 221, 4, 47, "Print",ExpressionUUID->"1af76fe4-f950-4e77-84d5-b11e5cdb34b9"],
+Cell[29883, 836, 307, 6, 162, "Print",ExpressionUUID->"30f2dc39-cc9f-40cc-8941-395137ca8e36"],
+Cell[30193, 844, 193, 7, 80, "Print",ExpressionUUID->"b3481b81-99e3-4be2-bcb2-deed84d1fc29"]
+}, Open  ]]
+}, Open  ]],
+Cell[30413, 855, 211, 4, 59, "Input",ExpressionUUID->"d14e697f-530f-4f14-91e6-d674035d5d42"],
+Cell[CellGroupData[{
+Cell[30649, 863, 1344, 38, 192, "Input",ExpressionUUID->"f2900945-f60f-451e-8292-919a76a0c071"],
+Cell[31996, 903, 191, 7, 80, "Print",ExpressionUUID->"2fe6ba9c-02aa-4044-b4e0-ed209ed0aa6e"]
+}, Open  ]],
+Cell[32202, 913, 288, 7, 59, "Input",ExpressionUUID->"d233afc7-6bd1-4592-ab9e-7d7fdbc8ca34"],
+Cell[32493, 922, 807, 20, 120, "Input",ExpressionUUID->"e85aa0af-8b0b-4dba-9973-f08b2e4db350"],
+Cell[33303, 944, 1330, 36, 192, "Input",ExpressionUUID->"30b6ba99-d365-4620-86f7-97c68f6bf79f"]
+}
+]
+*)
+

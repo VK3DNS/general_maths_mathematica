@@ -1,0 +1,98 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2951,         88]
+NotebookOptionsPosition[      2480,         71]
+NotebookOutlinePosition[      2874,         87]
+CellTagsIndexPosition[      2831,         84]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"tab", "[", 
+  RowBox[{"900000", ",", "6", ",", "6.78", ",", 
+   RowBox[{"-", "6500"}], ",", "12"}], "]"}]], "Input",
+ CellLabel->"In[15]:=",ExpressionUUID->"39033d32-d427-41c7-88fc-e32deb7a877c"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"payment number\"\>", "\<\"regular payment\"\>", "\<\"interest to be \
+applied\"\>", "\<\"change in principal\"\>", "\<\"current bal\"\>"},
+    {"0", "\<\"---\"\>", "\<\"---\"\>", "\<\"---\"\>", "900000.`"},
+    {"1", 
+     RowBox[{"-", "6500"}], "5085.000000000001`", 
+     RowBox[{"-", "1414.999999999999`"}], "898584.9999999999`"},
+    {"2", 
+     RowBox[{"-", "6500"}], "5077.00525`", 
+     RowBox[{"-", "1422.9947499999998`"}], "897162.0052499998`"},
+    {"3", 
+     RowBox[{"-", "6500"}], "5068.965329662499`", 
+     RowBox[{"-", "1431.0346703375008`"}], "895730.9705796622`"},
+    {"4", 
+     RowBox[{"-", "6500"}], "5060.879983775092`", 
+     RowBox[{"-", "1439.1200162249079`"}], "894291.8505634373`"},
+    {"5", 
+     RowBox[{"-", "6500"}], "5052.748955683422`", 
+     RowBox[{"-", "1447.2510443165784`"}], "892844.5995191206`"},
+    {"6", 
+     RowBox[{"-", "6500"}], "5044.571987283032`", 
+     RowBox[{"-", "1455.4280127169677`"}], "891389.1715064036`"},
+    {"\<\"(total)\"\>", 
+     RowBox[{"-", "39000"}], "30389.171506404047`", 
+     RowBox[{"-", "8610.828493595953`"}], "\<\"---\"\>"}
+   },
+   GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Print",
+ CellChangeTimes->{3.9631895305761003`*^9},
+ CellLabel->
+  "During evaluation of \
+In[15]:=",ExpressionUUID->"9d937a23-2a6c-4afe-9640-1d87220357ca"]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 229}, {53, Automatic}},
+FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"95ece424-ac81-42b4-9dc4-349cfc88ee99"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 219, 4, 30, "Input",ExpressionUUID->"39033d32-d427-41c7-88fc-e32deb7a877c"],
+Cell[802, 28, 1662, 40, 158, "Print",ExpressionUUID->"9d937a23-2a6c-4afe-9640-1d87220357ca"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
