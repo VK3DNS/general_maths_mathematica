@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     61960,       1349]
-NotebookOptionsPosition[     61610,       1335]
-NotebookOutlinePosition[     62002,       1351]
-CellTagsIndexPosition[     61959,       1348]
+NotebookDataLength[     63981,       1391]
+NotebookOptionsPosition[     63628,       1377]
+NotebookOutlinePosition[     64023,       1393]
+CellTagsIndexPosition[     63980,       1390]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -200,7 +200,7 @@ Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]",
            RowBox[{"{", 
             RowBox[{
              RowBox[{"numnodes", "*", "2"}], ",", 
-             RowBox[{"numnodes", "*", "2"}]}], "}"}], ",", "0"}], "]"}]}], 
+             RowBox[{"numnodes", "*", "2"}]}], "}"}], ",", "1"}], "]"}]}], 
         ";", "\[IndentingNewLine]", 
         RowBox[{"marked", "=", 
          RowBox[{"simplearray", "[", 
@@ -219,6 +219,42 @@ Scott :3\\\", FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]",
             RowBox[{
              RowBox[{"steplist", "[", 
               RowBox[{"[", "step", "]"}], "]"}], "[", "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Print", "[", 
+              RowBox[{
+              "\"\<stepnum: \>\"", ",", "stepnum", ",", " ", 
+               "\"\<, step: \>\"", ",", " ", "step"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<marked: \>\"", ",", 
+               RowBox[{"marked", "//", "MatrixForm"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<row: \>\"", ",", "rowcovered"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<col: \>\"", ",", "colcovered"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<path: \>\"", ",", 
+               RowBox[{"selfpath", "//", "MatrixForm"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<selfC: \>\"", ",", 
+               RowBox[{"selfC", "//", "MatrixForm"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<Z0R: \>\"", ",", "Z0R"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Print", "[", 
+              RowBox[{"\"\<Z0C\>\"", ",", "Z0C"}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{
+             "Print", "[", 
+              "\"\<---------------------------------------------------------\\\
+n\\n\\n\>\"", "]"}], ";"}], "\[IndentingNewLine]", "*)"}], 
            "\[IndentingNewLine]", 
            RowBox[{"stepnum", "+=", "1"}], ";", "\[IndentingNewLine]", 
            RowBox[{"If", "[", 
@@ -1001,7 +1037,7 @@ FontSize -> 10]\\)\>\""}], ";"}], "\[IndentingNewLine]",
          RowBox[{
           RowBox[{"iit", "=", "1"}], ",", 
           RowBox[{"iit", "<=", 
-           RowBox[{"countin", "+", "1"}]}], ",", 
+           RowBox[{"countin", "+", "2"}]}], ",", 
           RowBox[{"iit", "++"}], ",", "\[IndentingNewLine]", 
           RowBox[{
            RowBox[{"If", "[", 
@@ -1330,11 +1366,17 @@ complete.\\n\\!\\(\\*StyleBox[\\\"Created by Pepper Scott :3\\\", FontSize -> \
    3.963349192454163*^9, 3.963349253461802*^9}, {3.9633492971959248`*^9, 
    3.9633493369431334`*^9}, {3.963352331281004*^9, 3.96335237104993*^9}, {
    3.9633525244595118`*^9, 3.963352567133834*^9}, {3.963352633083715*^9, 
-   3.96335266206328*^9}, 3.9633527771093807`*^9},
- CellLabel->"In[1]:=",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
+   3.96335266206328*^9}, 3.9633527771093807`*^9, {3.9638492026032667`*^9, 
+   3.963849380643024*^9}, {3.963849452867489*^9, 3.963849501576418*^9}, {
+   3.963850019464055*^9, 3.9638500225902557`*^9}, {3.9638505697569103`*^9, 
+   3.963850571824791*^9}, {3.963850608253721*^9, 3.963850634604396*^9}, {
+   3.9638564028197317`*^9, 3.963856402878541*^9}, {3.963856611635333*^9, 
+   3.9638566227277317`*^9}},
+ CellLabel->
+  "In[1012]:=",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
 },
 WindowSize->{765, 870},
-WindowMargins->{{12, Automatic}, {Automatic, 6}},
+WindowMargins->{{Automatic, 280}, {Automatic, -28}},
 FrontEndVersion->"13.3 for Mac OS X ARM (64-bit) (July 24, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"b7152eba-c467-4d6b-887a-3a5e43324326"
@@ -1350,7 +1392,7 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 61048, 1313, 10804, "Input",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
+Cell[558, 20, 63066, 1355, 11392, "Input",ExpressionUUID->"eec65c58-563a-48bb-a18f-e1bd7ef2d26f"]
 }
 ]
 *)
